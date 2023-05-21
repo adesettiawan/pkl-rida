@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class DashboardController extends BaseController
+class Dashboard extends BaseController
 {
     public function index()
     {
         $data = [
-            'title' => 'Dashboard',
+            'title' => 'PKL Bidang RIDA',
         ];
 
         return view('backend/dashboard/index', $data);

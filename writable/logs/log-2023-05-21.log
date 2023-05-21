@@ -8,3 +8,19 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
  6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\starter-ci\\public\\index.php')
+ERROR - 2023-05-21 15:20:26 --> mysqli_sql_exception: Column count doesn't match value count at row 1 in C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(1801): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', NULL, false)
+#4 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(2192): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\pkl-rida\app\Database\Seeds\UserSeeder.php(30): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\pkl-rida\system\Database\Seeder.php(146): App\Database\Seeds\UserSeeder->run()
+#7 C:\xampp\htdocs\pkl-rida\app\Database\Seeds\DataSeeder.php(11): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\pkl-rida\system\Database\Seeder.php(146): App\Database\Seeds\DataSeeder->run()
+#9 C:\xampp\htdocs\pkl-rida\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#10 C:\xampp\htdocs\pkl-rida\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#11 C:\xampp\htdocs\pkl-rida\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#12 C:\xampp\htdocs\pkl-rida\spark(97): CodeIgniter\CLI\Console->run()
+#13 {main}

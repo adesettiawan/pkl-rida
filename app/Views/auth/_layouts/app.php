@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- index.html  21 Nov 2019 03:44:50 GMT -->
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
 
 <head>
     <meta charset="UTF-8">
@@ -10,45 +10,26 @@
     <title><?= $title != '' ? $title : 'PKL Bidang RIDA'; ?></title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/app.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/bootstrap-social/bootstrap-social.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/components.css">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/custom.css">
-    <!-- <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' /> -->
     <link rel='shortcut icon' type='image/x-icon' href='<?= base_url() ?>assets/img/logo1.png' />
 </head>
 
 <body>
     <div class="loader"></div>
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
-            <div class="navbar-bg"></div>
-
-            <!-- navbar -->
-            <?= $this->include('_layouts/_partials/navbar') ?>
-            <!-- End navbar -->
-
-            <!-- sidebar -->
-            <?= $this->include('_layouts/_partials/sidebar') ?>
-            <!-- End sidebar -->
-
-            <!-- content -->
-            <?= $this->renderSection('content') ?>
-            <!-- end content -->
-
-            <!-- footer -->
-            <?= $this->include('_layouts/_partials/footer') ?>
-            <!-- End footer -->
-
-        </div>
+        <!-- content -->
+        <?= $this->renderSection('content') ?>
+        <!-- end content -->
     </div>
     <!-- General JS Scripts -->
     <script src="<?= base_url() ?>assets/js/app.min.js"></script>
     <!-- JS Libraies -->
-    <script src="<?= base_url() ?>assets/bundles/apexcharts/apexcharts.min.js"></script>
     <!-- Page Specific JS File -->
-    <script src="<?= base_url() ?>assets/js/page/index.js"></script>
     <!-- Template JS File -->
     <script src="<?= base_url() ?>assets/js/scripts.js"></script>
     <!-- Custom JS File -->
@@ -56,6 +37,6 @@
 </body>
 
 
-<!-- index.html  21 Nov 2019 03:47:04 GMT -->
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
 
 </html>
