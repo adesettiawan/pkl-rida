@@ -30,7 +30,7 @@
                     Settings
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                <a href="<?= base_url('logout') ?>" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                     Logout
                 </a>
             </div>

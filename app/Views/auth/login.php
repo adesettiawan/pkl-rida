@@ -11,10 +11,35 @@
                         <h4>Login</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="#" class="needs-validation" novalidate="">
+                        <?php
+
+                        $errors = session()->getFlashdata('errors');
+                        if (!empty($errors)) { ?>
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    <?php foreach ($errors as $error) : ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
+
+                        <?php if (session()->getFlashdata('messages')) {
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo session()->getFlashdata('messages');
+                            echo '</div>';
+                        } ?>
+
+                        <?php if (session()->getFlashdata('message')) {
+                            echo '<div class="alert alert-success" role="alert">';
+                            echo session()->getFlashdata('message');
+                            echo '</div>';
+                        } ?>
+
+                        <form method="POST" action="<?= base_url('login_processed') ?>" class="needs-validation" novalidate="">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control" name="email" tabindex="1" placeholder="Email" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email" tabindex="1" placeholder="Email" required autofocus autocomplete="off">
                                 <div class="invalid-feedback">
                                     Please fill in your email
                                 </div>
@@ -28,7 +53,7 @@
                                         </a>
                                     </div> -->
                                 </div>
-                                <input id="password" type="password" class="form-control" name="password" tabindex="2" placeholder="Password" required>
+                                <input id="password" type="password" class="form-control" name="password" tabindex="2" placeholder="Password" required autocomplete="off">
                                 <div class="invalid-feedback">
                                     please fill in your password
                                 </div>
@@ -54,5 +79,13 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(300, function() {
+            $($this).remove();
+        });
+    }, 3000);
+</script>
 
 <?= $this->endSection() ?>

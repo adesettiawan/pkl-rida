@@ -29,10 +29,62 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// routes auth login
 $routes->get('/', 'Auth::index');
 $routes->get('/register', 'Auth::register');
+$routes->post('login_processed', 'Auth::login_processed');
+if (session()->is_login) {
+    $routes->get('logout', 'Auth::logout');
+    $routes->get('profile/(:num)', 'Auth::profile/$1');
+    $routes->post('update-profile/(:num)', 'Auth::updateProfileUser/$1');
+    $routes->get('change-password-profile/(:num)', 'Auth::changePasswordProfile/$1');
+    $routes->post('change-password-profile-processed/(:num)', 'Auth::changePasswordProfileProcessed/$1');
+}
 
-$routes->get('/dashboard', 'Dashboard::index');
+// routes admin page
+if (session()->get('level') == 1) {
+    $routes->group(
+        'admin',
+        ['filter' => 'auth'],
+        static function ($routes) {
+            $routes->get('/', 'Dashboard::index');
+
+            //data user route
+            // $routes->get('data_users', 'User::index');
+            // $routes->post('store', 'User::store');
+            // $routes->get('edit/(:num)', 'User::edit/$1');
+            // $routes->post('update/(:num)', 'User::update/$1');
+            // $routes->get('change-password/(:num)', 'User::changePassword/$1');
+            // $routes->post('change-password-processed/(:num)', 'User::changePasswordProcessed/$1');
+            // $routes->get('delete/(:num)', 'User::delete/$1');
+        }
+    );
+}
+
+// routes user page
+if (session()->get('level') == 2) {
+    $routes->group(
+        'user',
+        ['filter' => 'auth'],
+        static function ($routes) {
+            $routes->get('/', 'Dashboard::index');
+
+            $routes->group(
+                'data_sppd',
+                static function ($routes) {
+                    //data kabid route
+                    $routes->get('/', 'KepalaBidang::index');
+                    $routes->get('add_sppd', 'KepalaBidang::add');
+                    $routes->post('store', 'KepalaBidang::store');
+                    $routes->get('detail/(:num)', 'KepalaBidang::detail/$1');
+                    $routes->get('edit/(:num)', 'KepalaBidang::edit/$1');
+                    $routes->post('update/(:num)', 'KepalaBidang::update/$1');
+                    $routes->get('delete/(:num)', 'KepalaBidang::delete/$1');
+                }
+            );
+        }
+    );
+}
 
 /*
  * --------------------------------------------------------------------

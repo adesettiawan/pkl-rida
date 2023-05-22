@@ -47,11 +47,17 @@
                                     <input id="password2" type="password" class="form-control" name="password_confirm">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="ktm">Upload KTM</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile" name="ktm">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="npm">NIM/NPM</label>
+                                    <input id="npm" type="text" class="form-control" name="npm" required>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="ktm">Upload KTM</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile" name="ktm">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
