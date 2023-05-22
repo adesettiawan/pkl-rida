@@ -11,6 +11,7 @@ class UserSeeder extends Seeder
         $data = [
             [
                 'name'  => 'Administrator',
+                'npm'  => '19209290191',
                 'email'  => 'admin@gmail.com',
                 'telp'  => '082289030919',
                 'instansi_name'  => 'Politeknik Negeri Lampung',
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name'  => 'Adeset',
+                'npm'  => '18209290801',
                 'email'  => 'adsttt00@gmail.com',
                 'telp'  => '082289030919',
                 'instansi_name'  => 'Politeknik Negeri Lampung',
