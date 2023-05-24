@@ -42,7 +42,7 @@
 
             <li class="menu-header">Users</li>
             <li class="dropdown">
-                <a href="" class="nav-link"><i data-feather="users"></i><span>Users</span></a>
+                <a href="<?= base_url('admin/data_users') ?>" class="nav-link"><i data-feather="users"></i><span>Users</span></a>
             </li>
         </ul>
     </aside>

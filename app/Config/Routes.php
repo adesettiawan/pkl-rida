@@ -50,7 +50,7 @@ if (session()->get('level') == 1) {
             $routes->get('/', 'Dashboard::index');
 
             //data user route
-            // $routes->get('data_users', 'User::index');
+            $routes->get('data_users', 'User::index');
             // $routes->post('store', 'User::store');
             // $routes->get('edit/(:num)', 'User::edit/$1');
             // $routes->post('update/(:num)', 'User::update/$1');
@@ -68,20 +68,6 @@ if (session()->get('level') == 2) {
         ['filter' => 'auth'],
         static function ($routes) {
             $routes->get('/', 'Dashboard::index');
-
-            $routes->group(
-                'data_sppd',
-                static function ($routes) {
-                    //data kabid route
-                    $routes->get('/', 'KepalaBidang::index');
-                    $routes->get('add_sppd', 'KepalaBidang::add');
-                    $routes->post('store', 'KepalaBidang::store');
-                    $routes->get('detail/(:num)', 'KepalaBidang::detail/$1');
-                    $routes->get('edit/(:num)', 'KepalaBidang::edit/$1');
-                    $routes->post('update/(:num)', 'KepalaBidang::update/$1');
-                    $routes->get('delete/(:num)', 'KepalaBidang::delete/$1');
-                }
-            );
         }
     );
 }

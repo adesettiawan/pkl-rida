@@ -10,6 +10,8 @@
     <title><?= $title != '' ? $title : 'PKL Bidang RIDA'; ?></title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/app.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/datatables/datatables.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/components.css">
@@ -48,6 +50,12 @@
     <!-- JS Libraies -->
     <script src="<?= base_url() ?>assets/bundles/apexcharts/apexcharts.min.js"></script>
     <!-- Page Specific JS File -->
+    <!-- JS Libraies -->
+    <script src="<?= base_url() ?>assets/bundles/datatables/datatables.min.js"></script>
+    <script src="<?= base_url() ?>assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="<?= base_url() ?>assets/js/page/datatables.js"></script>
     <script src="<?= base_url() ?>assets/js/page/index.js"></script>
     <!-- Template JS File -->
     <script src="<?= base_url() ?>assets/js/scripts.js"></script>
