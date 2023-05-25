@@ -37,7 +37,7 @@ class CreateUsersTable extends Migration
             ],
             'status' => [
                 'type'           => 'INT',
-                'constraint'     => 5,
+                'constraint'     => 5, // status 1 aktif, status 2 tidak aktif
             ],
             'password' => [
                 'type'           => 'VARCHAR',

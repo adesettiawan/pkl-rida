@@ -45,6 +45,7 @@
 
         </div>
     </div>
+    <?= $this->renderSection('script') ?>
     <!-- General JS Scripts -->
     <script src="<?= base_url() ?>assets/js/app.min.js"></script>
     <!-- JS Libraies -->

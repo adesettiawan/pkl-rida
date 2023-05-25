@@ -11,8 +11,7 @@
                         <div class="card-header">
                             <h4>Data User</h4>
                             <div class="card-header-action">
-                                <!-- <a href="<?= base_url('admin/data_users') ?>" data-toggle="dropdown" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>&ensp; -->
-                                <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
+                                <a href="<?= base_url('admin/add_users') ?>" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
                             </div>
                         </div>
                         <div class="card-body">
