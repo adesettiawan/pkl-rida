@@ -41,13 +41,31 @@ class User extends BaseController
                     'required' => '{field} required!'
                 ]
             ],
-            'username' => [
+            'email' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} required!'
+                ]
+            ],
+            'telp' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} required!'
+                ]
+            ],
+            'instansi_name' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} required!'
                 ]
             ],
             'level' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} required!'
+                ]
+            ],
+            'status' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} required!'
@@ -72,12 +90,17 @@ class User extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $this->model->insert([
-            'id' => $this->request->getPost('id'),
+        $pw = $this->request->getPost('password');
+        $this->user->insert([
             'name' => $this->request->getPost('name'),
-            'username' => $this->request->getPost('username'),
+            'email' => $this->request->getPost('email'),
+            'telp' => $this->request->getPost('telp'),
+            'instansi_name' => $this->request->getPost('instansi_name'),
             'level' => $this->request->getPost('level'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'status' => $this->request->getPost('status'),
+            'npm' => $this->request->getPost('npm'),
+            'ktm' => $this->request->getPost('ktm'),
+            'password' => password_hash($pw, PASSWORD_DEFAULT),
             'image' => 'profile.jpg'
         ]);
         session()->setFlashdata('message', 'Save data successfully!..');

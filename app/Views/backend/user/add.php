@@ -11,7 +11,7 @@
                         <div class="card-header">
                             <h4>Tambah Data User</h4>
                             <div class="card-header-action">
-                                <a href="<?= base_url('admin/data_users') ?>" data-toggle="dropdown" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
+                                <a href="<?= base_url('admin/data_users') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
                             </div>
                         </div>
                         <form action="" method="POST" enctype="multipart/form-data">
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="password2" class="d-block">Password Confirmation</label>
-                                        <input id="password2" type="password" class="form-control" name="password_confirm">
+                                        <input id="password2" type="password" class="form-control" name="repassword">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -88,7 +88,7 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <label>Pilih Foto Profile</label>
-                                                <img id="image-preview" src="https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png" style="margin-bottom: 10px; border: 1px solid #555; height: 180px; width: 180px; border-radius:50%" alt="image preview" />
+                                                <img id="image-preview" src="https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png" style="margin-bottom: 10px; border: 1px solid #555; height: 180px; width: 180px; border-radius:10%" alt="image preview" />
                                             </div>
                                             <div class="col-8">
                                                 <input style="margin-top: 100px;" class="form-control mb-2" type="file" onchange="previewImage(this.value);" name="file_berita" id="image" accept="image/*" onChange="validate(this.value)" />
@@ -112,7 +112,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->Section('script') ?>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#customFile').on('change', function(e) {
