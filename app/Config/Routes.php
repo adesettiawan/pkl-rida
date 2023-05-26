@@ -52,6 +52,7 @@ if (session()->get('level') == 1) {
             //data user route
             $routes->get('data_users', 'User::index');
             $routes->get('add_users', 'User::add');
+            $routes->post('store', 'User::store');
             // $routes->post('store', 'User::store');
             // $routes->get('edit/(:num)', 'User::edit/$1');
             // $routes->post('update/(:num)', 'User::update/$1');

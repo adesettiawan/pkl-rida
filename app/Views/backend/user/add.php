@@ -14,7 +14,31 @@
                                 <a href="<?= base_url('admin/data_users') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
                             </div>
                         </div>
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <?php
+
+                        $errors = session()->getFlashdata('errors');
+                        if (!empty($errors)) { ?>
+                            <div class="alert alert-danger" role="alert">
+                                <ul class="text-danger">
+                                    <?php foreach ($errors as $error) : ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
+
+                        <?php if (session()->getFlashdata('messages')) {
+                            echo '<div class="alert alert-danger bg-danger text-white" role="alert">';
+                            echo session()->getFlashdata('messages');
+                            echo '</div>';
+                        } ?>
+
+                        <?php if (session()->getFlashdata('message')) {
+                            echo '<div class="alert alert-success bg-success text-white" role="alert">';
+                            echo session()->getFlashdata('message');
+                            echo '</div>';
+                        } ?>
+                        <form action="<?= base_url('admin/store') ?>" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <?= csrf_field() ?>
                                 <div class="row">
