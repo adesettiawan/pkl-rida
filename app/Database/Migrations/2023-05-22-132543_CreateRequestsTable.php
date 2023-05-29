@@ -20,7 +20,14 @@ class CreateRequestsTable extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
+            'nama_peserta' => [
+                'type'           => 'TEXT',
+            ],
             'nama_instansi' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 100,
+            ],
+            'no_surat' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 100,
             ],

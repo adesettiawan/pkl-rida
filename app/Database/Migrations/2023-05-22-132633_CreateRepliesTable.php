@@ -21,6 +21,10 @@ class CreateRepliesTable extends Migration
                 'unsigned'       => true,
 
             ],
+            'no_surat' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 100,
+            ],
             'nama_surat' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255,

@@ -67,11 +67,15 @@ class Auth extends BaseController
                         'image' => $row['image'],
                     ];
                     session()->set($data);
-                    session()->setFlashdata('message', 'Login successfully');
                     if (session()->get('level') == 1) {
+                        session()->setFlashdata('message', 'Login successfully');
                         return redirect()->to('admin');
-                    } elseif (session()->get('level') == 2) {
+                    } elseif (session()->get('level') == 2 && session()->get('status') == 1) {
+                        session()->setFlashdata('message', 'Login successfully');
                         return redirect()->to('user');
+                    } else {
+                        session()->setFlashdata('messages', 'Login failed, account not actived, please contact your admin..!');
+                        return redirect()->to('/');
                     }
                 } else {
                     session()->setFlashdata('messages', 'Login failed, wrong email or password, please check again..!');

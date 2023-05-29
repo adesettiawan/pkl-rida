@@ -16,7 +16,7 @@
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="inbox"></i><span>Surat Permohonan</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="basic-form.html">PKL</a></li>
+                    <li><a class="nav-link" href="<?= base_url('admin/data_permohonan_pkl') ?>">PKL</a></li>
                     <li><a class="nav-link" href="forms-advanced-form.html">KKN</a></li>
                     <li><a class="nav-link" href="forms-editor.html">Penelitian</a></li>
                 </ul>

@@ -58,6 +58,19 @@ if (session()->get('level') == 1) {
             $routes->get('change-password/(:num)', 'User::changePassword/$1');
             $routes->post('change-password-processed/(:num)', 'User::changePasswordProcessed/$1');
             $routes->get('delete/(:num)', 'User::delete/$1');
+
+            $routes->group(
+                'data_permohonan_pkl',
+                static function ($routes) {
+                    //data permohonan route
+                    $routes->get('/', 'Request::index');
+                    $routes->post('store', 'Request::store');
+                    $routes->get('detail/(:num)', 'Request::detail/$1');
+                    $routes->get('edit/(:num)', 'Request::edit/$1');
+                    $routes->post('update/(:num)', 'Request::update/$1');
+                    $routes->get('delete/(:num)', 'Request::delete/$1');
+                }
+            );
         }
     );
 }
