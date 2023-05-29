@@ -10,7 +10,12 @@
                     <div class="card author-box card-primary">
                         <div class="card-body">
                             <div class="author-box-left">
-                                <img alt="image" src="assets/img/users/user-1.png" class="rounded-circle author-box-picture">
+                                <?php if (session()->get('image') != '') { ?>
+                                    <img alt="image" src="<?= base_url() ?>assets/img/<?= session()->get('image') ?>" class="rounded-circle author-box-picture">
+                                <?php  } else { ?>
+                                    <img alt="image" src="<?= base_url() ?>assets/img/profile.jpg" class="rounded-circle author-box-picture">
+                                <?php } ?>
+
                                 <div class="clearfix"></div>
                             </div>
                             <div class="author-box-details">

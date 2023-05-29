@@ -41,7 +41,7 @@
                                                     <?= $i++ ?>
                                                 </td>
                                                 <td>
-                                                    <img alt="image" src="assets/img/users/user-5.png" width="35">
+                                                    <img alt="image" src="<?= base_url() ?>assets/img/<?= $user['image'] ?>" width="35">
                                                 </td>
                                                 <td><?= $user['npm'] ?></td>
                                                 <td class="align-middle">
@@ -69,13 +69,13 @@
                                                     <div class="dropdown">
                                                         <a href="#" data-toggle="dropdown" class="btn btn-primary btn-sm dropdown-toggle">Aksi</a>
                                                         <div class="dropdown-menu">
-                                                            <a href="#" class="dropdown-item has-icon text-warning"><i class="fas fa-key"></i>
+                                                            <a href="<?= base_url('admin/change-password/' . $user['id']) ?>" class="dropdown-item has-icon text-warning"><i class="fas fa-key"></i>
                                                                 Password</a>
                                                             <div class="dropdown-divider"></div>
-                                                            <a href="#" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                                            <a href="<?= base_url('admin/edit/' . $user['id']) ?>" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
                                                             <?php if ($user['level'] != '1') { ?>
                                                                 <div class="dropdown-divider"></div>
-                                                                <a href="#" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
+                                                                <a href="<?= base_url('admin/delete/' . $user['id']) ?>" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
                                                                     Delete</a>
                                                             <?php } ?>
                                                         </div>
