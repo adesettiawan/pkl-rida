@@ -17,7 +17,7 @@ $url_menu = $uri->getSegment(2);
             </li>
 
             <li class="menu-header">Konten</li>
-            <li <?= $url_menu == "data_permohonan_pkl" || $url_menu == "data_permohonan_kkn" || $url_menu == "data_permohonan_penelitian" ? 'class="dropdown active"' : 'nnnnn' ?>>
+            <li <?= $url_menu == "data_permohonan_pkl" || $url_menu == "data_permohonan_kkn" || $url_menu == "data_permohonan_penelitian" ? 'class="dropdown active"' : '' ?>>
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="inbox"></i><span>Surat Permohonan</span></a>
                 <ul class="dropdown-menu">
                     <li <?= $url_menu == "data_permohonan_pkl" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_permohonan_pkl') ?>">PKL</a>
@@ -29,12 +29,12 @@ $url_menu = $uri->getSegment(2);
                 </ul>
             </li>
 
-            <li class="dropdown">
+            <li <?= $url_menu == "data_balasan_pkl" || $url_menu == "data_balasan_kkn" || $url_menu == "data_balasan_penelitian" ? 'class="dropdown active"' : '' ?>>
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="send"></i><span>Surat Balasan</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="basic-form.html">PKL</a></li>
-                    <li><a class="nav-link" href="forms-advanced-form.html">KKN</a></li>
-                    <li><a class="nav-link" href="forms-editor.html">Penelitian</a></li>
+                    <li <?= $url_menu == "data_balasan_pkl" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_balasan_pkl') ?>">PKL</a></li>
+                    <li <?= $url_menu == "data_balasan_kkn" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_balasan_kkn') ?>">KKN</a></li>
+                    <li <?= $url_menu == "data_balasan_penelitian" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_balasan_penelitian') ?>">Penelitian</a></li>
                 </ul>
             </li>
 

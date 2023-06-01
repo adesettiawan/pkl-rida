@@ -19,9 +19,10 @@ class ModelReplies extends Model
 
     public function get_all_pkl()
     {
-        $data = $this->select('replies.*, users.name AS nama_ketua')->table('replies')
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
-            ->where('type', 'PKL')
+            // ->join('requests', 'requests.user_id = replies.user_id')
+            ->where('replies.type', 'PKL')
             ->get()->getResultArray();
 
         return $data;
@@ -29,7 +30,7 @@ class ModelReplies extends Model
 
     public function get_detail_pkl($id)
     {
-        $data = $this->select('replies.*, users.name AS nama_ketua')->table('replies')
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'PKL')
             ->where('replies.id', $id)
@@ -40,7 +41,7 @@ class ModelReplies extends Model
 
     public function get_all_kkn()
     {
-        $data = $this->select('replies.*, users.name AS nama_ketua')->table('replies')
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'KKN')
             ->get()->getResultArray();
@@ -50,7 +51,7 @@ class ModelReplies extends Model
 
     public function get_detail_kkn($id)
     {
-        $data = $this->select('replies.*, users.name AS nama_ketua')->table('replies')
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'KKN')
             ->where('replies.id', $id)
@@ -61,7 +62,7 @@ class ModelReplies extends Model
 
     public function get_all_penelitian()
     {
-        $data = $this->select('replies.*, users.name AS nama_ketua')->table('replies')
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'Penelitian')
             ->get()->getResultArray();
@@ -71,7 +72,7 @@ class ModelReplies extends Model
 
     public function get_detail_penelitian($id)
     {
-        $data = $this->select('replies.*, users.name AS nama_ketua')->table('replies')
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'Penelitian')
             ->where('replies.id', $id)

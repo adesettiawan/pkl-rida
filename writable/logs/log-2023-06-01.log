@@ -1199,3 +1199,264 @@ INFO - 2023-06-01 14:18:22 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2023-06-01 14:18:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-06-01 14:18:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-06-01 14:26:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:45:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:47:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-01 14:47:27 --> mysqli_sql_exception: Column 'type' in where clause is ambiguous in C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `replies...', 0)
+#1 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `replies...')
+#2 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `replies...')
+#3 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `replies...', Array, false)
+#4 C:\xampp\htdocs\pkl-rida\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\pkl-rida\app\Models\ModelReplies.php(26): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\pkl-rida\app\Controllers\RepliesPKL.php(24): App\Models\ModelReplies->get_all_pkl()
+#7 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+#8 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+#9 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pkl-rida\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\pkl-rida\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2023-06-01 14:47:27 --> Column 'type' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = :type:', [...], false)
+ 5 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelReplies.php(26): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\RepliesPKL.php(24): App\Models\ModelReplies->get_all_pkl()
+ 8 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+ 9 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+10 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 14:48:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-01 14:48:02 --> mysqli_sql_exception: Column 'type' in where clause is ambiguous in C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `replies...', 0)
+#1 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `replies...')
+#2 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `replies...')
+#3 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `replies...', Array, false)
+#4 C:\xampp\htdocs\pkl-rida\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\pkl-rida\app\Models\ModelReplies.php(26): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\pkl-rida\app\Controllers\RepliesPKL.php(24): App\Models\ModelReplies->get_all_pkl()
+#7 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+#8 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+#9 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pkl-rida\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\pkl-rida\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2023-06-01 14:48:02 --> Column 'type' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = :type:', [...], false)
+ 5 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelReplies.php(26): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\RepliesPKL.php(24): App\Models\ModelReplies->get_all_pkl()
+ 8 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+ 9 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+10 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 14:48:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-01 14:48:27 --> mysqli_sql_exception: Column 'type' in where clause is ambiguous in C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `replies...', 0)
+#1 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `replies...')
+#2 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `replies...')
+#3 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `replies...', Array, false)
+#4 C:\xampp\htdocs\pkl-rida\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\pkl-rida\app\Models\ModelReplies.php(26): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\pkl-rida\app\Controllers\RepliesPKL.php(24): App\Models\ModelReplies->get_all_pkl()
+#7 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+#8 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+#9 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pkl-rida\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\pkl-rida\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2023-06-01 14:48:27 --> Column 'type' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta` AS `nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta` AS `nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta` AS `nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = \'PKL\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `replies`.*, `users`.`name` AS `nama_ketua`, `requests`.`nama_peserta` AS `nama_peserta`
+FROM `replies`
+JOIN `users` ON `users`.`id` = `replies`.`user_id`
+JOIN `requests` ON `requests`.`user_id` = `replies`.`user_id`
+WHERE `type` = :type:', [...], false)
+ 5 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Models\ModelReplies.php(26): CodeIgniter\Model->__call('get', [])
+ 7 APPPATH\Controllers\RepliesPKL.php(24): App\Models\ModelReplies->get_all_pkl()
+ 8 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+ 9 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+10 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 14:49:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:52:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:52:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:53:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 14:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:26:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:27:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:29:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-06-01 15:30:24 --> Undefined array key "nama_instansi"
+in APPPATH\Views\backend\replies\pkl\index.php on line 81.
+ 1 APPPATH\Views\backend\replies\pkl\index.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_instansi"', 'C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\index.php', 81)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('backend/replies/pkl/index', [], true)
+ 5 APPPATH\Controllers\RepliesPKL.php(26): view('backend/replies/pkl/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 15:31:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-06-01 15:31:55 --> Undefined array key "tgl_diterima"
+in APPPATH\Views\backend\replies\pkl\index.php on line 159.
+ 1 APPPATH\Views\backend\replies\pkl\index.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "tgl_diterima"', 'C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\index.php', 159)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('backend/replies/pkl/index', [], true)
+ 5 APPPATH\Controllers\RepliesPKL.php(26): view('backend/replies/pkl/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 15:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:32:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:33:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:36:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:37:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:37:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-06-01 15:38:04 --> Undefined array key "nama_peserta"
+in APPPATH\Views\backend\replies\pkl\index.php on line 75.
+ 1 APPPATH\Views\backend\replies\pkl\index.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_peserta"', 'C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\index.php', 75)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('backend/replies/pkl/index', [], true)
+ 5 APPPATH\Controllers\RepliesPKL.php(26): view('backend/replies/pkl/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 15:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:38:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:38:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:39:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-06-01 15:39:38 --> Undefined variable $permohonan
+in APPPATH\Views\backend\replies\pkl\edit.php on line 41.
+ 1 APPPATH\Views\backend\replies\pkl\edit.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $permohonan', 'C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\edit.php', 41)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\pkl-rida\\app\\Views\\backend\\replies\\pkl\\edit.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('backend/replies/pkl/edit', [], true)
+ 5 APPPATH\Controllers\RepliesPKL.php(104): view('backend/replies/pkl/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\RepliesPKL->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RepliesPKL))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-06-01 15:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:42:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:42:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:43:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:47:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:48:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:48:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:58:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 15:59:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:00:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:00:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-01 16:01:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
