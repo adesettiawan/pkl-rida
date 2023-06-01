@@ -37,4 +37,46 @@ class ModelRequest extends Model
 
         return $data;
     }
+
+    public function get_all_kkn()
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'KKN')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_detail_kkn($id)
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'KKN')
+            ->where('requests.id', $id)
+            ->get()->getRowArray();
+
+        return $data;
+    }
+
+    public function get_all_penelitian()
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'Penelitian')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_detail_penelitian($id)
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'Penelitian')
+            ->where('requests.id', $id)
+            ->get()->getRowArray();
+
+        return $data;
+    }
 }

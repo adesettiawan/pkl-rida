@@ -9,9 +9,9 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Edit Surat Permohonan PKL</h4>
+                            <h4>Edit Surat Permohonan KKN</h4>
                             <div class="card-header-action">
-                                <a href="<?= base_url('admin/data_permohonan_pkl') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
+                                <a href="<?= base_url('admin/data_permohonan_kkn') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
                             </div>
                         </div>
                         <?php
@@ -38,11 +38,11 @@
                             echo session()->getFlashdata('message');
                             echo '</div>';
                         } ?>
-                        <form action="<?= base_url('admin/data_permohonan_pkl/update/' . $permohonan['id']) ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('admin/data_permohonan_kkn/update/' . $permohonan['id']) ?>" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <?= csrf_field() ?>
                                 <div class="row" id="multiForm">
-                                    <input id="type" type="hidden" name="type" value="PKL">
+                                    <input id="type" type="hidden" name="type" value="KKN">
                                     <div class="form-group col-11">
                                         <label for="user_id">Ketua Peserta</label>
                                         <select name="user_id" id="user_id" style="width: 95%;" class="form-control select2">
@@ -61,7 +61,6 @@
                                     if ($permohonan['nama_peserta'] != '') {
                                         foreach (unserialize($permohonan['nama_peserta']) as $nama_peserta) {
                                             $id_feat = 'feat' . $i;
-
                                     ?>
                                             <?php $i++ ?>
                                             <div class="remove-group" id="<?= $id_feat ?>" style="position:relative; width:95%;">

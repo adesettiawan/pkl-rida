@@ -9,9 +9,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Data Surat Permohonan PKL</h4>
+                            <h4>Data Surat Permohonan KKN</h4>
                             <div class="card-header-action">
-                                <a href="<?= base_url('admin/data_permohonan_pkl/add') ?>" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
+                                <a href="<?= base_url('admin/data_permohonan_kkn/add') ?>" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
                             </div>
                         </div>
                         <?php
@@ -80,7 +80,7 @@
                                                     <td>-</td>
                                                 <?php } ?>
                                                 <td><?= $permohonan['nama_instansi'] ?></td>
-                                                <td><a href="<?= base_url('assets/file_surat/pkl/' . $permohonan['file_surat']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
+                                                <td><a href="<?= base_url('assets/file_surat/kkn/' . $permohonan['file_surat']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
                                                 <td>
                                                     <?php if ($permohonan['tgl_diterima'] != '0000-00-00') { ?>
                                                         <div class="badge badge-info badge-shadow"><?= date('d-m-Y', strtotime($permohonan['tgl_diterima'])) ?></div>
@@ -104,10 +104,10 @@
                                                             <a data-toggle="modal" style="cursor: pointer;" data-target="#staticBackdrop<?= $permohonan['id'] ?>" class="dropdown-item has-icon text-warning"><i class="fas fa-key"></i>
                                                                 Verifikasi</a>
                                                             <div class="dropdown-divider"></div>
-                                                            <a href="<?= base_url('admin/data_permohonan_pkl/edit/' . $permohonan['id']) ?>" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                                            <a href="<?= base_url('admin/data_permohonan_kkn/edit/' . $permohonan['id']) ?>" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
 
                                                             <div class="dropdown-divider"></div>
-                                                            <a href="<?= base_url('admin/data_permohonan_pkl/delete/' . $permohonan['id']) ?>" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
+                                                            <a href="<?= base_url('admin/data_permohonan_kkn/delete/' . $permohonan['id']) ?>" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
                                                                 Delete</a>
                                                         </div>
                                                     </div>
@@ -135,7 +135,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="<?= base_url('admin/data_permohonan_pkl/verifikasiStatus/' . $permohonan['id']) ?>" method="POST">
+                    <form action="<?= base_url('admin/data_permohonan_kkn/verifikasiStatus/' . $permohonan['id']) ?>" method="POST">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Pilih Status</label>

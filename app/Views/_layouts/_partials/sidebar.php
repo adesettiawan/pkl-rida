@@ -1,24 +1,31 @@
+<?php
+$uri = current_url(true);
+$url_menu = $uri->getSegment(2);
+?>
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="<?= base_url('/') ?>">
+            <a href="<?= base_url('admin/dashboard') ?>">
                 <img alt="image" src="<?= base_url() ?>assets/img/logo1.png" class="header-logo" />
                 <span class="logo-name">PKL RIDA</span>
             </a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown active">
-                <a href="<?= base_url('/') ?>" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+            <li class="dropdown <?= $url_menu == 'dashboard' || $url_menu == '' ? 'active' : '' ?>">
+                <a href="<?= base_url('admin/dashboard') ?>" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
 
             <li class="menu-header">Konten</li>
-            <li class="dropdown">
+            <li <?= $url_menu == "data_permohonan_pkl" || $url_menu == "data_permohonan_kkn" || $url_menu == "data_permohonan_penelitian" ? 'class="dropdown active"' : 'nnnnn' ?>>
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="inbox"></i><span>Surat Permohonan</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="<?= base_url('admin/data_permohonan_pkl') ?>">PKL</a></li>
-                    <li><a class="nav-link" href="forms-advanced-form.html">KKN</a></li>
-                    <li><a class="nav-link" href="forms-editor.html">Penelitian</a></li>
+                    <li <?= $url_menu == "data_permohonan_pkl" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_permohonan_pkl') ?>">PKL</a>
+                    </li>
+                    <li <?= $url_menu == "data_permohonan_kkn" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_permohonan_kkn') ?>">KKN</a>
+                    </li>
+                    <li <?= $url_menu == "data_permohonan_penelitian" ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('admin/data_permohonan_penelitian') ?>">Penelitian</a>
+                    </li>
                 </ul>
             </li>
 

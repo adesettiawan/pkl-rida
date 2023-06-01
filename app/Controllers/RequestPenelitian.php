@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\ModelAuth;
 use App\Models\ModelRequest;
 
-class Request extends BaseController
+class RequestPenelitian extends BaseController
 {
     protected $permohonan, $user;
 
@@ -20,19 +20,19 @@ class Request extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Surat Permohonan - PKL Bidang RIDA',
-            'data_permohonan' => $this->permohonan->get_all_pkl(),
+            'title' => 'Surat Permohonan - Penelitian Bidang RIDA',
+            'data_permohonan' => $this->permohonan->get_all_penelitian(),
         ];
-        return view('backend/request/pkl/index', $data);
+        return view('backend/request/penelitian/index', $data);
     }
 
     public function add()
     {
         $data = [
-            'title' => 'Surat Permohonan - PKL Bidang RIDA',
+            'title' => 'Surat Permohonan - Penelitian Bidang RIDA',
             'users' => $this->user->get_active_user(),
         ];
-        return view('backend/request/pkl/add', $data);
+        return view('backend/request/penelitian/add', $data);
     }
 
     public function store()
@@ -87,7 +87,7 @@ class Request extends BaseController
 
         $file_surat = $this->request->getFile('file_surat');
         if ($file_surat != '') {
-            $file_surat->move(ROOTPATH . 'public/assets/file_surat/pkl');
+            $file_surat->move(ROOTPATH . 'public/assets/file_surat/penelitian');
         }
 
         $this->permohonan->insert([
@@ -102,7 +102,7 @@ class Request extends BaseController
             'file_surat' => $file_surat->getName(),
         ]);
         session()->setFlashdata('message', 'Save data successfully!..');
-        return redirect()->to('admin/data_permohonan_pkl');
+        return redirect()->to('admin/data_permohonan_penelitian');
     }
 
     public function verifikasiStatus($id)
@@ -115,17 +115,17 @@ class Request extends BaseController
         ]);
 
         session()->setFlashdata('message', 'Update status successfully!..');
-        return redirect()->to('admin/data_permohonan_pkl');
+        return redirect()->to('admin/data_permohonan_penelitian');
     }
 
     public function edit($id)
     {
         $data = [
-            'title' => 'Surat Permohonan - PKL Bidang RIDA',
+            'title' => 'Surat Permohonan - Penelitian Bidang RIDA',
             'users' => $this->user->get_active_user(),
-            'permohonan' => $this->permohonan->get_detail_pkl($id),
+            'permohonan' => $this->permohonan->get_detail_penelitian($id),
         ];
-        return view('backend/request/pkl/edit', $data);
+        return view('backend/request/penelitian/edit', $data);
     }
 
     public function update($id)
@@ -181,7 +181,7 @@ class Request extends BaseController
         $file_surats = $this->request->getFile('file_surat');
         $file_surat = $this->permohonan->find($id);
         $old_file_surat = $file_surat['file_surat'];
-        $path = '../public/assets/file_surat/pkl/';
+        $path = '../public/assets/file_surat/penelitian/';
 
 
         // file_surat
@@ -190,7 +190,7 @@ class Request extends BaseController
                 @unlink($path . $old_file_surat);
             }
             $new_file_surat = $file_surats->getName();
-            $file_surats->move(ROOTPATH . 'public/assets/file_surat/pkl');
+            $file_surats->move(ROOTPATH . 'public/assets/file_surat/penelitian');
         } else {
             $new_file_surat = $old_file_surat;
         }
@@ -206,7 +206,7 @@ class Request extends BaseController
             'file_surat' => $new_file_surat,
         ]);
         session()->setFlashdata('message', 'Save data successfully!..');
-        return redirect()->to('admin/data_permohonan_pkl');
+        return redirect()->to('admin/data_permohonan_penelitian');
     }
 
     public function delete($id)
@@ -214,10 +214,10 @@ class Request extends BaseController
         $file_surat = $this->permohonan->find($id);
         $this->permohonan->delete($id);
         $f_surat = $file_surat['file_surat'];
-        $path = '../public/assets/file_surat/pkl/';
+        $path = '../public/assets/file_surat/penelitian/';
         @unlink($path . $f_surat);
 
         session()->setFlashdata('message', 'Data Deleted Successfully');
-        return redirect()->to(base_url('admin/data_permohonan_pkl'));
+        return redirect()->to(base_url('admin/data_permohonan_penelitian'));
     }
 }

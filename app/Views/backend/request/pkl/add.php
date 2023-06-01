@@ -9,7 +9,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah Surat Permohonan</h4>
+                            <h4>Tambah Surat Permohonan PKL</h4>
                             <div class="card-header-action">
                                 <a href="<?= base_url('admin/data_permohonan_pkl') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
                             </div>
