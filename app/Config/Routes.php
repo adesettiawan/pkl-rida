@@ -59,10 +59,10 @@ if (session()->get('level') == 1) {
             $routes->post('change-password-processed/(:num)', 'User::changePasswordProcessed/$1');
             $routes->get('delete/(:num)', 'User::delete/$1');
 
+            // route permohonan
             $routes->group(
                 'data_permohonan_pkl',
                 static function ($routes) {
-                    //data permohonan route
                     $routes->get('/', 'Request::index');
                     $routes->get('add', 'Request::add');
                     $routes->post('store', 'Request::store');
@@ -77,7 +77,6 @@ if (session()->get('level') == 1) {
             $routes->group(
                 'data_permohonan_kkn',
                 static function ($routes) {
-                    //data permohonan route
                     $routes->get('/', 'RequestKKN::index');
                     $routes->get('add', 'RequestKKN::add');
                     $routes->post('store', 'RequestKKN::store');
@@ -92,7 +91,6 @@ if (session()->get('level') == 1) {
             $routes->group(
                 'data_permohonan_penelitian',
                 static function ($routes) {
-                    //data permohonan route
                     $routes->get('/', 'RequestPenelitian::index');
                     $routes->get('add', 'RequestPenelitian::add');
                     $routes->post('store', 'RequestPenelitian::store');
@@ -101,6 +99,49 @@ if (session()->get('level') == 1) {
                     $routes->get('edit/(:num)', 'RequestPenelitian::edit/$1');
                     $routes->post('update/(:num)', 'RequestPenelitian::update/$1');
                     $routes->get('delete/(:num)', 'RequestPenelitian::delete/$1');
+                }
+            );
+
+            // route balasan
+            $routes->group(
+                'data_balasan_pkl',
+                static function ($routes) {
+                    $routes->get('/', 'RepliesPKL::index');
+                    $routes->get('add', 'RepliesPKL::add');
+                    $routes->post('store', 'RepliesPKL::store');
+                    $routes->post('verifikasiStatus/(:num)', 'RepliesPKL::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'RepliesPKL::detail/$1');
+                    $routes->get('edit/(:num)', 'RepliesPKL::edit/$1');
+                    $routes->post('update/(:num)', 'RepliesPKL::update/$1');
+                    $routes->get('delete/(:num)', 'RepliesPKL::delete/$1');
+                }
+            );
+
+            $routes->group(
+                'data_balasan_kkn',
+                static function ($routes) {
+                    $routes->get('/', 'RepliesKKN::index');
+                    $routes->get('add', 'RepliesKKN::add');
+                    $routes->post('store', 'RepliesKKN::store');
+                    $routes->post('verifikasiStatus/(:num)', 'RepliesKKN::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'RepliesKKN::detail/$1');
+                    $routes->get('edit/(:num)', 'RepliesKKN::edit/$1');
+                    $routes->post('update/(:num)', 'RepliesKKN::update/$1');
+                    $routes->get('delete/(:num)', 'RepliesKKN::delete/$1');
+                }
+            );
+
+            $routes->group(
+                'data_balasan_penelitian',
+                static function ($routes) {
+                    $routes->get('/', 'RepliesPenelitian::index');
+                    $routes->get('add', 'RepliesPenelitian::add');
+                    $routes->post('store', 'RepliesPenelitian::store');
+                    $routes->post('verifikasiStatus/(:num)', 'RepliesPenelitian::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'RepliesPenelitian::detail/$1');
+                    $routes->get('edit/(:num)', 'RepliesPenelitian::edit/$1');
+                    $routes->post('update/(:num)', 'RepliesPenelitian::update/$1');
+                    $routes->get('delete/(:num)', 'RepliesPenelitian::delete/$1');
                 }
             );
         }
@@ -113,7 +154,7 @@ if (session()->get('level') == 2) {
         'user',
         ['filter' => 'auth'],
         static function ($routes) {
-            $routes->get('/', 'Dashboard::index');
+            $routes->get('dashboard', 'Dashboard::index');
         }
     );
 }

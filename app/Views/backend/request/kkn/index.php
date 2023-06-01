@@ -90,11 +90,11 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($permohonan['status'] == 1) { ?>
-                                                        <div class="badge badge-success badge-shadow">Diverifikasi</div>
+                                                        <div class="badge badge-success badge-shadow">Approve</div>
                                                     <?php } elseif ($permohonan['status'] == 2) { ?>
-                                                        <div class="badge badge-warning badge-shadow">Belum diverifikasi</div>
+                                                        <div class="badge badge-warning badge-shadow">Pending</div>
                                                     <?php } else { ?>
-                                                        <div class="badge badge-danger badge-shadow">Tidak diverifikasi</div>
+                                                        <div class="badge badge-danger badge-shadow">Rejected</div>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
@@ -141,17 +141,17 @@
                                 <label>Pilih Status</label>
                                 <select class="form-control" name="status">
                                     <?php if ($permohonan['status'] == 1) { ?>
-                                        <option value="1">Diverifikasi</option>
-                                        <option value="2">Belum Diverifikasi</option>
-                                        <option value="0">Tidak Diverifikasi</option>
+                                        <option value="1">Approve</option>
+                                        <option value="2">Pending</option>
+                                        <option value="0">Rejected</option>
                                     <?php } elseif ($permohonan['status'] == 2) { ?>
-                                        <option value="2">Belum Diverifikasi</option>
-                                        <option value="1">Diverifikasi</option>
-                                        <option value="0">Tidak Diverifikasi</option>
+                                        <option value="2">Pending</option>
+                                        <option value="1">Approve</option>
+                                        <option value="0">Rejected</option>
                                     <?php } else { ?>
-                                        <option value="0">Tidak Diverifikasi</option>
-                                        <option value="1">Diverifikasi</option>
-                                        <option value="2">Belum Diverifikasi</option>
+                                        <option value="0">Rejected</option>
+                                        <option value="1">Approve</option>
+                                        <option value="2">Pending</option>
                                     <?php } ?>
 
                                 </select>
