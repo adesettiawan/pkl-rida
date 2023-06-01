@@ -38,12 +38,12 @@ $url_menu = $uri->getSegment(2);
                 </ul>
             </li>
 
-            <li class="dropdown">
+            <li <?= $url_menu == "laporan_pkl" || $url_menu == "laporan_kkn" || $url_menu == "laporan_penelitian" ? 'class="dropdown active"' : '' ?>>
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layers"></i><span>Laporan</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">PKL</a></li>
-                    <li><a href="gmaps-draggable-marker.html">KKN</a></li>
-                    <li><a href="gmaps-geocoding.html">Penelitian</a></li>
+                    <li <?= $url_menu == "laporan_pkl" ? 'class="active"' : '' ?>><a href="<?= base_url('admin/laporan_pkl') ?>">PKL</a></li>
+                    <li <?= $url_menu == "laporan_kkn" ? 'class="active"' : '' ?>><a href="<?= base_url('admin/laporan_kkn') ?>">KKN</a></li>
+                    <li <?= $url_menu == "laporan_penelitian" ? 'class="active"' : '' ?>><a href="<?= base_url('admin/laporan_penelitian') ?>">Penelitian</a></li>
                 </ul>
             </li>
 

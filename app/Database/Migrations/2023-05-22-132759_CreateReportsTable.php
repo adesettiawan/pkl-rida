@@ -27,6 +27,10 @@ class CreateReportsTable extends Migration
             'file_reports' => [
                 'type'           => 'TEXT',
             ],
+            'status' => [
+                'type'           => 'INT',
+                'constraint'     => 1, // status 0 => belum verifikasi, status 1 => verifikasi
+            ],
             'type' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 50, // type PKL, type KKN, type Penelitian

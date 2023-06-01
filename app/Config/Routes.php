@@ -144,6 +144,49 @@ if (session()->get('level') == 1) {
                     $routes->get('delete/(:num)', 'RepliesPenelitian::delete/$1');
                 }
             );
+
+            // route laporan
+            $routes->group(
+                'laporan_pkl',
+                static function ($routes) {
+                    $routes->get('/', 'ReportPKL::index');
+                    $routes->get('add', 'ReportPKL::add');
+                    $routes->post('store', 'ReportPKL::store');
+                    $routes->post('verifikasiStatus/(:num)', 'ReportPKL::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'ReportPKL::detail/$1');
+                    $routes->get('edit/(:num)', 'ReportPKL::edit/$1');
+                    $routes->post('update/(:num)', 'ReportPKL::update/$1');
+                    $routes->get('delete/(:num)', 'ReportPKL::delete/$1');
+                }
+            );
+
+            $routes->group(
+                'laporan_kkn',
+                static function ($routes) {
+                    $routes->get('/', 'ReportKKN::index');
+                    $routes->get('add', 'ReportKKN::add');
+                    $routes->post('store', 'ReportKKN::store');
+                    $routes->post('verifikasiStatus/(:num)', 'ReportKKN::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'ReportKKN::detail/$1');
+                    $routes->get('edit/(:num)', 'ReportKKN::edit/$1');
+                    $routes->post('update/(:num)', 'ReportKKN::update/$1');
+                    $routes->get('delete/(:num)', 'ReportKKN::delete/$1');
+                }
+            );
+
+            $routes->group(
+                'laporan_penelitian',
+                static function ($routes) {
+                    $routes->get('/', 'ReportPenelitian::index');
+                    $routes->get('add', 'ReportPenelitian::add');
+                    $routes->post('store', 'ReportPenelitian::store');
+                    $routes->post('verifikasiStatus/(:num)', 'ReportPenelitian::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'ReportPenelitian::detail/$1');
+                    $routes->get('edit/(:num)', 'ReportPenelitian::edit/$1');
+                    $routes->post('update/(:num)', 'ReportPenelitian::update/$1');
+                    $routes->get('delete/(:num)', 'ReportPenelitian::delete/$1');
+                }
+            );
         }
     );
 }
