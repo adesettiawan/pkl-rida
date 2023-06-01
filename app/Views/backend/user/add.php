@@ -141,16 +141,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->Section('script') ?>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#customFile').on('change', function(e) {
-            //get the file name
-            var fileName = e.target.files[0].name;
-            //replace the "Choose a file" label
-            $('.custom-file-label').html(fileName);
-        })
-    })
-</script>
 
 <script type="text/javascript">
     // validasi extention image

@@ -157,7 +157,7 @@ class User extends BaseController
                 ]
             ],
             'ktm' => [
-                'mime_in[ktm, ktm/png, ktm/jpg,ktm/jpeg, ktm/gif]',
+                'mime_in[ktm, image/png, image/jpg,image/jpeg, image/gif]',
                 'max_size[ktm, 4096]',
             ],
             // 'image' => [

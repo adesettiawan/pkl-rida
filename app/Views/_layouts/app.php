@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/app.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/datatables/datatables.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+
+
+    <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/bundles/jquery-selectric/selectric.css">
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/components.css">
@@ -45,7 +50,6 @@
 
         </div>
     </div>
-    <?= $this->renderSection('script') ?>
     <!-- General JS Scripts -->
     <script src="<?= base_url() ?>assets/js/app.min.js"></script>
     <!-- JS Libraies -->
@@ -62,6 +66,12 @@
     <script src="<?= base_url() ?>assets/js/scripts.js"></script>
     <!-- Custom JS File -->
     <script src="<?= base_url() ?>assets/js/custom.js"></script>
+
+
+    <script src="<?= base_url() ?>assets/bundles/select2/dist/js/select2.full.min.js"></script>
+    <script src="<?= base_url() ?>assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+
+    <?= $this->renderSection('script') ?>
 </body>
 
 

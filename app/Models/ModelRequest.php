@@ -19,9 +19,21 @@ class ModelRequest extends Model
 
     public function get_all_pkl()
     {
-        $data = $this->db->table('requests')
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
             ->where('type', 'PKL')
             ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_detail_pkl($id)
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'PKL')
+            ->where('requests.id', $id)
+            ->get()->getRowArray();
 
         return $data;
     }

@@ -14,6 +14,30 @@
                                 <a href="<?= base_url('admin/add_users') ?>" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
                             </div>
                         </div>
+                        <?php
+
+                        $errors = session()->getFlashdata('errors');
+                        if (!empty($errors)) { ?>
+                            <div class="alert alert-danger text-white" role="alert">
+                                <ul class="text-white">
+                                    <?php foreach ($errors as $error) : ?>
+                                        <li><?= esc($error) ?></li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
+
+                        <?php if (session()->getFlashdata('messages')) {
+                            echo '<div class="alert alert-danger bg-danger text-white" role="alert">';
+                            echo session()->getFlashdata('messages');
+                            echo '</div>';
+                        } ?>
+
+                        <?php if (session()->getFlashdata('message')) {
+                            echo '<div class="alert alert-success bg-success text-white" role="alert">';
+                            echo session()->getFlashdata('message');
+                            echo '</div>';
+                        } ?>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-1">
@@ -94,4 +118,14 @@
     </section>
 </div>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('script') ?>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(2000, 0).slideUp(500, function() {
+            $($this).remove();
+        });
+    }, 3000);
+</script>
 <?= $this->endSection() ?>

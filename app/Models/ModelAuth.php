@@ -16,4 +16,13 @@ class ModelAuth extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
+
+    public function get_active_user()
+    {
+        $data = $this->db->table('users')
+            ->where('status', '1')
+            ->get()->getResultArray();
+
+        return $data;
+    }
 }

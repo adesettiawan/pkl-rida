@@ -64,7 +64,9 @@ if (session()->get('level') == 1) {
                 static function ($routes) {
                     //data permohonan route
                     $routes->get('/', 'Request::index');
+                    $routes->get('add', 'Request::add');
                     $routes->post('store', 'Request::store');
+                    $routes->post('verifikasiStatus/(:num)', 'Request::verifikasiStatus/$1');
                     $routes->get('detail/(:num)', 'Request::detail/$1');
                     $routes->get('edit/(:num)', 'Request::edit/$1');
                     $routes->post('update/(:num)', 'Request::update/$1');
