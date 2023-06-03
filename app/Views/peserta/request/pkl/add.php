@@ -11,7 +11,7 @@
                         <div class="card-header">
                             <h4>Tambah Surat Permohonan</h4>
                             <div class="card-header-action">
-                                <a href="<?= base_url('admin/data_permohonan_pkl') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
+                                <a href="<?= base_url('user/data_permohonan_pkl') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
                             </div>
                         </div>
                         <?php
@@ -38,14 +38,15 @@
                             echo session()->getFlashdata('message');
                             echo '</div>';
                         } ?>
-                        <form action="<?= base_url('admin/store') ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('user/data_permohonan_pkl/store') ?>" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <?= csrf_field() ?>
                                 <div class="row" id="multiForm">
-                                    <input id="type" type="text" name="type" value="PKL">
+                                    <input id="type" type="hidden" name="type" value="PKL">
+                                    <input id="user_id" type="hidden" name="user_id" value="<?= session()->get('id') ?>">
                                     <div class="form-group col-11">
-                                        <label for="user_id">Ketua Peserta</label>
-                                        <input style="width: 95%;" id="user_id" type="text" class="form-control" name="user_id" required>
+                                        <label for="name_ketua">Ketua Peserta</label>
+                                        <input style="width: 95%;" id="name_ketua" type="text" class="form-control" name="name_ketua" value="<?= session()->get('name') ?>" style="pointer-events: none;" disabled>
                                     </div>
                                     <div class="col-1">
                                         <button type="button" id="addRemoveIp" class="btn btn-primary btn-lg" style="margin-top: 28px; margin-left: -32px;"><i class="fas fa-plus"></i></button>
@@ -81,7 +82,7 @@
                                         </div>
                                         <div class="col-9">
                                             <label for="file_surat">Upload File Surat </label>
-                                            <input class="form-control mb-2" type="file" onchange="previewImage2(this.value);" name="file_surat" id="file_surat" accept="application/pdf" onChange="validate2(this.value)" />
+                                            <input class="form-control mb-2" type="file" name="file_surat" id="file_surat" accept="application/pdf" onChange="validate2(this.value)" />
                                             <span style="color: red" id="message_error"></span>
                                             <smal style="color: #5046b9">File surat berformat: pdf.</smal>
                                         </div>
@@ -114,22 +115,6 @@
             $("#file_surat").val("");
         }
     }
-
-    // review file_surat upload
-    function previewImage2(dataImage) {
-        validate2(dataImage);
-        document.getElementById('image-preview2').style.display = "block";
-        var oFReader = new FileReader();
-        if (document.getElementById('file_surat').files[0] !== undefined) {
-            oFReader.readAsDataURL(document.getElementById('file_surat').files[0])
-            oFReader.onload = function(oFREvent) {
-                document.getElementById('image-preview2').src = oFREvent.target.result;
-            };
-            $('#message_error').hide();
-        } else {
-            $('#message_error').show();
-        }
-    };
 </script>
 
 <script type="text/javascript">
@@ -144,7 +129,7 @@
         html += '<input id="nama_peserta" type="text" class="form-control" name="nama_peserta[]">';
         html += '</div>';
         html += '<div class="col-1" style="position: absolute; top: 26px;right: -2px;">';
-        html += '<button type="button" class="remove-item btn btn-danger btn-lg"><i class="fas fa-trash-alt"></i></button>';
+        html += '<button type="button" class="remove-item btn btn-danger btn-lg"><i class="fas fa-minus-circle"></i></button>';
         html += '</div>';
         html += '</div>';
         $("#multiForm").append(html);

@@ -29,7 +29,7 @@ class ModelRequest extends Model
 
     public function get_detail_pkl($id)
     {
-        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+        $data = $this->select('requests.*, users.name AS nama_ketua,users.email AS email_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'PKL')
             ->where('requests.id', $id)
@@ -50,7 +50,7 @@ class ModelRequest extends Model
 
     public function get_detail_kkn($id)
     {
-        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+        $data = $this->select('requests.*, users.name AS nama_ketua,users.email AS email_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'KKN')
             ->where('requests.id', $id)
@@ -71,7 +71,7 @@ class ModelRequest extends Model
 
     public function get_detail_penelitian($id)
     {
-        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+        $data = $this->select('requests.*, users.name AS nama_ketua,users.email AS email_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'Penelitian')
             ->where('requests.id', $id)

@@ -25,4 +25,13 @@ class ModelAuth extends Model
 
         return $data;
     }
+
+    public function get_user_admin()
+    {
+        $data = $this->table('users')
+            ->where('id', 1)
+            ->get()->getRowArray();
+
+        return $data;
+    }
 }
