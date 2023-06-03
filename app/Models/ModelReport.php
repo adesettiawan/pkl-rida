@@ -28,6 +28,18 @@ class ModelReport extends Model
         return $data;
     }
 
+    public function get_byUser_pkl()
+    {
+        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
+            ->join('users', 'users.id = reports.user_id')
+            // ->join('requests', 'requests.user_id = reports.user_id')
+            ->where('reports.type', 'PKL')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_pkl($id)
     {
         $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi, users.email AS email_ketua')->table('reports')
@@ -49,6 +61,18 @@ class ModelReport extends Model
         return $data;
     }
 
+    public function get_byUser_kkn()
+    {
+        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
+            ->join('users', 'users.id = reports.user_id')
+            // ->join('requests', 'requests.user_id = reports.user_id')
+            ->where('reports.type', 'KKN')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_kkn($id)
     {
         $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi, users.email AS email_ketua')->table('reports')
@@ -65,6 +89,18 @@ class ModelReport extends Model
         $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
             ->join('users', 'users.id = reports.user_id')
             ->where('type', 'Penelitian')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_byUser_penelitian()
+    {
+        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
+            ->join('users', 'users.id = reports.user_id')
+            // ->join('requests', 'requests.user_id = reports.user_id')
+            ->where('reports.type', 'Penelitian')
+            ->where('users.id', session()->get('id'))
             ->get()->getResultArray();
 
         return $data;

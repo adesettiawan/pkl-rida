@@ -27,6 +27,17 @@ class ModelRequest extends Model
         return $data;
     }
 
+    public function get_byUser_pkl()
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'PKL')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_pkl($id)
     {
         $data = $this->select('requests.*, users.name AS nama_ketua,users.email AS email_ketua')->table('requests')
@@ -48,6 +59,17 @@ class ModelRequest extends Model
         return $data;
     }
 
+    public function get_byUser_kkn()
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'KKN')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_kkn($id)
     {
         $data = $this->select('requests.*, users.name AS nama_ketua,users.email AS email_ketua')->table('requests')
@@ -64,6 +86,17 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'Penelitian')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_byUser_penelitian()
+    {
+        $data = $this->select('requests.*, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'Penelitian')
+            ->where('users.id', session()->get('id'))
             ->get()->getResultArray();
 
         return $data;

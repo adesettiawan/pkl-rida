@@ -34,4 +34,13 @@ class ModelAuth extends Model
 
         return $data;
     }
+
+    public function get_user_byLogin()
+    {
+        $data = $this->table('users')
+            ->where('id', session()->get('id'))
+            ->get()->getRowArray();
+
+        return $data;
+    }
 }

@@ -27,7 +27,7 @@ class ReportPKL extends BaseController
     {
         $data = [
             'title' => 'Laporan - PKL Bidang RIDA',
-            'laporan' => $this->laporan->get_all_pkl(),
+            'laporan' => $this->laporan->get_byUser_pkl(),
             'user_admin' => $this->user->get_user_admin(),
         ];
         return view('peserta/report/pkl/index', $data);

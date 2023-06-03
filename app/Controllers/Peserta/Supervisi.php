@@ -26,7 +26,7 @@ class Supervisi extends BaseController
     {
         $data = [
             'title' => 'Supervisi - Bidang RIDA',
-            'supervisi' => $this->supervisi->get_all_supervisi(),
+            'supervisi' => $this->supervisi->get_byUser_supervisi(),
             'user_admin' => $this->user->get_user_admin(),
         ];
         return view('peserta/supervisi/index', $data);

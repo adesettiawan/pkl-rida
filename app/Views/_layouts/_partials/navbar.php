@@ -23,19 +23,14 @@
                 <?php if (session()->get('image') != '') { ?>
                     <img alt="image" src="<?= base_url() ?>assets/img/<?= session()->get('image') ?>" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block">
                     <?php  } else { ?>
-                        <img alt="image" src="<?= base_url() ?>assets/img/profile.jpg" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block">
+                        <img alt="image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block">
                         <?php } ?>
 
                         </span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Hello, <?= session()->get('name') ?></div>
-                <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+                <a href="<?= base_url('profile/' . session()->get('id')) ?>" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
-                    <!-- </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                    Activities
-                </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                    Settings
-                </a> -->
                     <div class="dropdown-divider"></div>
                     <a href="<?= base_url('logout') ?>" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                         Logout

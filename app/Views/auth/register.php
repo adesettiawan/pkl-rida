@@ -3,15 +3,39 @@
 <?= $this->Section('content') ?>
 
 <section class="section">
-    <div class="container mt-5">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h4>Register</h4>
                     </div>
+                    <?php
+
+                    $errors = session()->getFlashdata('errors');
+                    if (!empty($errors)) { ?>
+                        <div class="alert alert-danger text-white" role="alert">
+                            <ul class="text-white">
+                                <?php foreach ($errors as $error) : ?>
+                                    <li><?= esc($error) ?></li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
+
+                    <?php if (session()->getFlashdata('messages')) {
+                        echo '<div class="alert alert-danger bg-danger text-white" role="alert">';
+                        echo session()->getFlashdata('messages');
+                        echo '</div>';
+                    } ?>
+
+                    <?php if (session()->getFlashdata('message')) {
+                        echo '<div class="alert alert-success bg-success text-white" role="alert">';
+                        echo session()->getFlashdata('message');
+                        echo '</div>';
+                    } ?>
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('register_processed') ?>" method="POST" enctype="multipart/form-data">
                             <?= csrf_field() ?>
                             <div class="row">
                                 <div class="form-group col-6">
@@ -43,21 +67,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-6">
-                                    <label for="password2" class="d-block">Password Confirmation</label>
-                                    <input id="password2" type="password" class="form-control" name="repassword">
+                                    <label for="repassword" class="d-block">Password Confirmation</label>
+                                    <input id="repassword" type="password" class="form-control" name="repassword">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-6">
-                                    <label for="npm">NIM/NPM</label>
-                                    <input id="npm" type="text" class="form-control" name="npm" required>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="ktm">Upload KTM</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="ktm">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
+                            <div class="form-group">
+                                <label for="npm">NIM/NPM</label>
+                                <input id="npm" type="text" class="form-control" name="npm" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ktm">Upload KTM</label>
+                                <div class="custom-file">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                    <input type="file" accept="image/*" class="custom-file-input" id="customFile" name="ktm" style="display: none;">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,4 +98,20 @@
     </div>
 </section>
 
+<?= $this->endSection() ?>
+<?= $this->section('script') ?>
+<script>
+    $('#customFile').change(function() {
+        var i = $(this).prev('label').clone();
+        var file = $('#customFile')[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
+</script>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(2000, 0).slideUp(500, function() {
+            $($this).remove();
+        });
+    }, 3000);
+</script>
 <?= $this->endSection() ?>

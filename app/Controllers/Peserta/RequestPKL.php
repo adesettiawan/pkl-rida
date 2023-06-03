@@ -27,7 +27,7 @@ class RequestPKL extends BaseController
     {
         $data = [
             'title' => 'Surat Permohonan - PKL Bidang RIDA',
-            'data_permohonan' => $this->permohonan->get_all_pkl(),
+            'data_permohonan' => $this->permohonan->get_byUser_pkl(),
             'user_admin' => $this->user->get_user_admin(),
 
         ];

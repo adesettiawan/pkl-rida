@@ -28,6 +28,18 @@ class ModelReplies extends Model
         return $data;
     }
 
+    public function get_byUser_pkl()
+    {
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
+            ->join('users', 'users.id = replies.user_id')
+            // ->join('requests', 'requests.user_id = replies.user_id')
+            ->where('replies.type', 'PKL')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_byStatus_pkl()
     {
         $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
@@ -61,6 +73,17 @@ class ModelReplies extends Model
         return $data;
     }
 
+    public function get_byUser_kkn()
+    {
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
+            ->join('users', 'users.id = replies.user_id')
+            ->where('type', 'KKN')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_byStatus_kkn()
     {
         $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
@@ -89,6 +112,17 @@ class ModelReplies extends Model
         $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'Penelitian')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_byUser_penelitian()
+    {
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
+            ->join('users', 'users.id = replies.user_id')
+            ->where('type', 'Penelitian')
+            ->where('users.id', session()->get('id'))
             ->get()->getResultArray();
 
         return $data;

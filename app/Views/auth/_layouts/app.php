@@ -34,6 +34,8 @@
     <script src="<?= base_url() ?>assets/js/scripts.js"></script>
     <!-- Custom JS File -->
     <script src="<?= base_url() ?>assets/js/custom.js"></script>
+
+    <?= $this->renderSection('script') ?>
 </body>
 
 

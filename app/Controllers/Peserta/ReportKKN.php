@@ -26,7 +26,7 @@ class ReportKKN extends BaseController
     {
         $data = [
             'title' => 'Laporan - KKN Bidang RIDA',
-            'laporan' => $this->laporan->get_all_kkn(),
+            'laporan' => $this->laporan->get_byUser_kkn(),
             'user_admin' => $this->user->get_user_admin(),
         ];
         return view('peserta/report/kkn/index', $data);

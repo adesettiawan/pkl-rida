@@ -25,7 +25,7 @@ class RequestKKN extends BaseController
     {
         $data = [
             'title' => 'Surat Permohonan - KKN Bidang RIDA',
-            'data_permohonan' => $this->permohonan->get_all_kkn(),
+            'data_permohonan' => $this->permohonan->get_byUser_kkn(),
             'user_admin' => $this->user->get_user_admin(),
 
         ];

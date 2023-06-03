@@ -26,6 +26,16 @@ class ModelSupervisi extends Model
         return $data;
     }
 
+    public function get_byUser_supervisi()
+    {
+        $data = $this->select('supervisis.*, users.name AS nama_ketua, users.instansi_name AS nama_instansi')->table('supervisis')
+            ->join('users', 'users.id = supervisis.user_id')
+            ->where('users.id', session()->get('id'))
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_supervisi($id)
     {
         $data = $this->select('supervisis.*, users.name AS nama_ketua,users.email AS email_ketua')->table('supervisis')

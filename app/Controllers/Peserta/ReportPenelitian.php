@@ -25,7 +25,7 @@ class ReportPenelitian extends BaseController
     {
         $data = [
             'title' => 'Laporan - Penelitian Bidang RIDA',
-            'laporan' => $this->laporan->get_all_penelitian(),
+            'laporan' => $this->laporan->get_byUser_penelitian(),
             'user_admin' => $this->user->get_user_admin(),
         ];
         return view('peserta/report/penelitian/index', $data);

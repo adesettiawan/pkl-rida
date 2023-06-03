@@ -33,6 +33,7 @@ $routes->set404Override();
 $routes->get('/', 'Auth::index');
 $routes->get('/register', 'Auth::register');
 $routes->post('login_processed', 'Auth::login_processed');
+$routes->post('register_processed', 'Auth::register_processed');
 if (session()->is_login) {
     $routes->get('logout', 'Auth::logout');
     $routes->get('profile/(:num)', 'Auth::profile/$1');

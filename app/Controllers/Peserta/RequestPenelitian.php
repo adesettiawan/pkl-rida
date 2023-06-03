@@ -25,7 +25,7 @@ class RequestPenelitian extends BaseController
     {
         $data = [
             'title' => 'Surat Permohonan - Penelitian Bidang RIDA',
-            'data_permohonan' => $this->permohonan->get_all_penelitian(),
+            'data_permohonan' => $this->permohonan->get_byUser_penelitian(),
             'user_admin' => $this->user->get_user_admin(),
 
         ];

@@ -10,18 +10,18 @@
                     <div class="card author-box card-primary">
                         <div class="card-body">
                             <div class="author-box-left">
-                                <?php if (session()->get('image') != '') { ?>
-                                    <img alt="image" src="<?= base_url() ?>assets/img/<?= session()->get('image') ?>" class="rounded-circle author-box-picture">
+                                <?php if ($user['image'] != '') { ?>
+                                    <img alt="image" src="<?= base_url() ?>assets/img/<?= $user['image'] ?>" class="rounded-circle author-box-picture">
                                 <?php  } else { ?>
-                                    <img alt="image" src="<?= base_url() ?>assets/img/profile.jpg" class="rounded-circle author-box-picture">
+                                    <img alt="image" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="rounded-circle author-box-picture">
                                 <?php } ?>
 
                                 <div class="clearfix"></div>
                             </div>
                             <div class="author-box-details">
                                 <div class="author-box-name" style="font-size: 20px;">
-                                    <a href="javascript:void(0)"><?= session()->get('name') ?> </a>
-                                    <?php if (session()->get('status') == 1) { ?>
+                                    <a href="javascript:void(0)"><?= $user['name'] ?> </a>
+                                    <?php if ($user['status'] == 1) { ?>
                                         <div class="text-success text-small font-600-bold"><i class="fas fa-circle"></i> Aktif</div>
                                     <?php } else { ?>
                                         <div class="text-small font-weight-600 text-muted"><i class="fas fa-circle"></i> Tidak aktif</div>
@@ -29,8 +29,8 @@
                                 </div>
                                 <div class="author-box-job mt-1" style="font-size: 14px;"></div>
                                 <div class="author-box-description">
-                                    <p>NPM : <?= session()->get('npm') ?> | <?= session()->get('instansi_name') ?> <br>
-                                        <span style="font-size: 14px;">Email : <?= session()->get('email') ?></span>
+                                    <p>NPM : <?= $user['npm'] ?> | <?= $user['instansi_name'] ?> <br>
+                                        <span style="font-size: 14px;">Email : <?= $user['email'] ?></span>
                                     </p>
                                 </div>
                             </div>
