@@ -30,7 +30,7 @@ class ModelReport extends Model
 
     public function get_detail_pkl($id)
     {
-        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
+        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi, users.email AS email_ketua')->table('reports')
             ->join('users', 'users.id = reports.user_id')
             ->where('type', 'PKL')
             ->where('reports.id', $id)
@@ -51,7 +51,7 @@ class ModelReport extends Model
 
     public function get_detail_kkn($id)
     {
-        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
+        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi, users.email AS email_ketua')->table('reports')
             ->join('users', 'users.id = reports.user_id')
             ->where('type', 'KKN')
             ->where('reports.id', $id)
@@ -72,7 +72,7 @@ class ModelReport extends Model
 
     public function get_detail_penelitian($id)
     {
-        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('reports')
+        $data = $this->select('reports.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi, users.email AS email_ketua')->table('reports')
             ->join('users', 'users.id = reports.user_id')
             ->where('type', 'Penelitian')
             ->where('reports.id', $id)

@@ -274,7 +274,7 @@ if (session()->get('level') == 2) {
                     $routes->get('/', 'Peserta\ReportPKL::index');
                     $routes->get('add', 'Peserta\ReportPKL::add');
                     $routes->post('store', 'Peserta\ReportPKL::store');
-                    $routes->post('verifikasiStatus/(:num)', 'Peserta\ReportPKL::verifikasiStatus/$1');
+                    $routes->post('verifikasiToAdmin/(:num)', 'Peserta\ReportPKL::verifikasiToAdmin/$1');
                     $routes->get('detail/(:num)', 'Peserta\ReportPKL::detail/$1');
                     $routes->get('edit/(:num)', 'Peserta\ReportPKL::edit/$1');
                     $routes->post('update/(:num)', 'Peserta\ReportPKL::update/$1');
@@ -288,7 +288,7 @@ if (session()->get('level') == 2) {
                     $routes->get('/', 'Peserta\ReportKKN::index');
                     $routes->get('add', 'Peserta\ReportKKN::add');
                     $routes->post('store', 'Peserta\ReportKKN::store');
-                    $routes->post('verifikasiStatus/(:num)', 'Peserta\ReportKKN::verifikasiStatus/$1');
+                    $routes->post('verifikasiToAdmin/(:num)', 'Peserta\ReportKKN::verifikasiToAdmin/$1');
                     $routes->get('detail/(:num)', 'Peserta\ReportKKN::detail/$1');
                     $routes->get('edit/(:num)', 'Peserta\ReportKKN::edit/$1');
                     $routes->post('update/(:num)', 'Peserta\ReportKKN::update/$1');
@@ -302,7 +302,7 @@ if (session()->get('level') == 2) {
                     $routes->get('/', 'Peserta\ReportPenelitian::index');
                     $routes->get('add', 'Peserta\ReportPenelitian::add');
                     $routes->post('store', 'Peserta\ReportPenelitian::store');
-                    $routes->post('verifikasiStatus/(:num)', 'Peserta\ReportPenelitian::verifikasiStatus/$1');
+                    $routes->post('verifikasiToAdmin/(:num)', 'Peserta\ReportPenelitian::verifikasiToAdmin/$1');
                     $routes->get('detail/(:num)', 'Peserta\ReportPenelitian::detail/$1');
                     $routes->get('edit/(:num)', 'Peserta\ReportPenelitian::edit/$1');
                     $routes->post('update/(:num)', 'Peserta\ReportPenelitian::update/$1');
