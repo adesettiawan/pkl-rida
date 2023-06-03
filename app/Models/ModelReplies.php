@@ -28,6 +28,18 @@ class ModelReplies extends Model
         return $data;
     }
 
+    public function get_byStatus_pkl()
+    {
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
+            ->join('users', 'users.id = replies.user_id')
+            // ->join('requests', 'requests.user_id = replies.user_id')
+            ->where('replies.type', 'PKL')
+            ->where('replies.status', 1)
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_pkl($id)
     {
         $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
@@ -49,6 +61,18 @@ class ModelReplies extends Model
         return $data;
     }
 
+    public function get_byStatus_kkn()
+    {
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
+            ->join('users', 'users.id = replies.user_id')
+            // ->join('requests', 'requests.user_id = replies.user_id')
+            ->where('replies.type', 'KKN')
+            ->where('replies.status', 1)
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
     public function get_detail_kkn($id)
     {
         $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
@@ -65,6 +89,18 @@ class ModelReplies extends Model
         $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
             ->join('users', 'users.id = replies.user_id')
             ->where('type', 'Penelitian')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_byStatus_penelitian()
+    {
+        $data = $this->select('replies.*, users.name AS nama_ketua,users.instansi_name AS nama_instansi')->table('replies')
+            ->join('users', 'users.id = replies.user_id')
+            // ->join('requests', 'requests.user_id = replies.user_id')
+            ->where('replies.type', 'Penelitian')
+            ->where('replies.status', 1)
             ->get()->getResultArray();
 
         return $data;

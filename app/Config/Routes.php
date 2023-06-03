@@ -246,36 +246,67 @@ if (session()->get('level') == 2) {
             $routes->group(
                 'data_balasan_pkl',
                 static function ($routes) {
-                    $routes->get('/', 'Peserta/RepliesPKL::index');
-                    $routes->get('show/(:num)', 'Peserta/RepliesPKL::show/$1');
+                    $routes->get('/', 'Peserta\RepliesPKL::index');
+                    $routes->get('show/(:num)', 'Peserta\RepliesPKL::show/$1');
                 }
             );
 
             $routes->group(
                 'data_balasan_kkn',
                 static function ($routes) {
-                    $routes->get('/', 'RepliesKKN::index');
-                    $routes->get('add', 'RepliesKKN::add');
-                    $routes->post('store', 'RepliesKKN::store');
-                    $routes->post('verifikasiStatus/(:num)', 'RepliesKKN::verifikasiStatus/$1');
-                    $routes->get('detail/(:num)', 'RepliesKKN::detail/$1');
-                    $routes->get('edit/(:num)', 'RepliesKKN::edit/$1');
-                    $routes->post('update/(:num)', 'RepliesKKN::update/$1');
-                    $routes->get('delete/(:num)', 'RepliesKKN::delete/$1');
+                    $routes->get('/', 'Peserta\RepliesKKN::index');
+                    $routes->get('show/(:num)', 'Peserta\RepliesKKN::show/$1');
                 }
             );
 
             $routes->group(
                 'data_balasan_penelitian',
                 static function ($routes) {
-                    $routes->get('/', 'RepliesPenelitian::index');
-                    $routes->get('add', 'RepliesPenelitian::add');
-                    $routes->post('store', 'RepliesPenelitian::store');
-                    $routes->post('verifikasiStatus/(:num)', 'RepliesPenelitian::verifikasiStatus/$1');
-                    $routes->get('detail/(:num)', 'RepliesPenelitian::detail/$1');
-                    $routes->get('edit/(:num)', 'RepliesPenelitian::edit/$1');
-                    $routes->post('update/(:num)', 'RepliesPenelitian::update/$1');
-                    $routes->get('delete/(:num)', 'RepliesPenelitian::delete/$1');
+                    $routes->get('/', 'Peserta\RepliesPenelitian::index');
+                    $routes->get('show/(:num)', 'Peserta\RepliesPenelitian::show/$1');
+                }
+            );
+
+            // route laporan
+            $routes->group(
+                'laporan_pkl',
+                static function ($routes) {
+                    $routes->get('/', 'Peserta\ReportPKL::index');
+                    $routes->get('add', 'Peserta\ReportPKL::add');
+                    $routes->post('store', 'Peserta\ReportPKL::store');
+                    $routes->post('verifikasiStatus/(:num)', 'Peserta\ReportPKL::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'Peserta\ReportPKL::detail/$1');
+                    $routes->get('edit/(:num)', 'Peserta\ReportPKL::edit/$1');
+                    $routes->post('update/(:num)', 'Peserta\ReportPKL::update/$1');
+                    $routes->get('delete/(:num)', 'Peserta\ReportPKL::delete/$1');
+                }
+            );
+
+            $routes->group(
+                'laporan_kkn',
+                static function ($routes) {
+                    $routes->get('/', 'Peserta\ReportKKN::index');
+                    $routes->get('add', 'Peserta\ReportKKN::add');
+                    $routes->post('store', 'Peserta\ReportKKN::store');
+                    $routes->post('verifikasiStatus/(:num)', 'Peserta\ReportKKN::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'Peserta\ReportKKN::detail/$1');
+                    $routes->get('edit/(:num)', 'Peserta\ReportKKN::edit/$1');
+                    $routes->post('update/(:num)', 'Peserta\ReportKKN::update/$1');
+                    $routes->get('delete/(:num)', 'Peserta\ReportKKN::delete/$1');
+                }
+            );
+
+            $routes->group(
+                'laporan_penelitian',
+                static function ($routes) {
+                    $routes->get('/', 'Peserta\ReportPenelitian::index');
+                    $routes->get('add', 'Peserta\ReportPenelitian::add');
+                    $routes->post('store', 'Peserta\ReportPenelitian::store');
+                    $routes->post('verifikasiStatus/(:num)', 'Peserta\ReportPenelitian::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'Peserta\ReportPenelitian::detail/$1');
+                    $routes->get('edit/(:num)', 'Peserta\ReportPenelitian::edit/$1');
+                    $routes->post('update/(:num)', 'Peserta\ReportPenelitian::update/$1');
+                    $routes->get('delete/(:num)', 'Peserta\ReportPenelitian::delete/$1');
                 }
             );
         }

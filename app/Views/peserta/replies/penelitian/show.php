@@ -9,9 +9,9 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Detail Surat Balasan PKL</h4>
+                            <h4>Detail Surat Balasan Penelitian</h4>
                             <div class="card-header-action">
-                                <a href="<?= base_url('user/data_balasan_pkl') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
+                                <a href="<?= base_url('user/data_balasan_penelitian') ?>" class="btn btn-dark"><i class="fas fa-angle-left"></i>&ensp;Back</a>
                             </div>
                         </div>
                         <?php
@@ -41,7 +41,7 @@
 
                         <div class="card-body">
                             <div class="row" id="multiForm">
-                                <input id="type" type="hidden" name="type" value="PKL">
+                                <input id="type" type="hidden" name="type" value="penelitian">
                                 <div class="form-group col-12">
                                     <label for="user_id">Ketua Peserta</label>
                                     <select disabled name="user_id" id="user_id" class="form-control select2">
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <a href="<?= base_url('assets/file_replies/pkl/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-primary mr-1">Unduh Surat Balasan</a>
+                            <a href="<?= base_url('assets/file_replies/penelitian/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-primary mr-1">Unduh Surat Balasan</a>
                         </div>
                     </div>
                 </div>

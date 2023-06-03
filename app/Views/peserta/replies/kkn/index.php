@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Data Surat Balasan PKL</h4>
+                            <h4>Data Surat Balasan KKN</h4>
                         </div>
                         <?php
 
@@ -69,7 +69,7 @@
                                                 <td><?= $balasan['nama_ketua'] ?></td>
 
                                                 <td><?= $balasan['nama_instansi'] ?></td>
-                                                <td><a href="<?= base_url('assets/file_replies/pkl/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
+                                                <td><a href="<?= base_url('assets/file_replies/kkn/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
                                                 <td>
                                                     <?php if ($balasan['status'] == 1) { ?>
                                                         <div class="badge badge-success badge-shadow">Approve</div>
@@ -86,7 +86,7 @@
                                                     <div class="dropdown">
                                                         <a href="#" data-toggle="dropdown" class="btn btn-primary btn-sm dropdown-toggle">Aksi</a>
                                                         <div class="dropdown-menu">
-                                                            <a href="<?= base_url('user/data_balasan_pkl/show/' . $balasan['id']) ?>" class="dropdown-item has-icon"><i class="far fa-eye"></i> Detail</a>
+                                                            <a href="<?= base_url('user/data_balasan_kkn/show/' . $balasan['id']) ?>" class="dropdown-item has-icon"><i class="far fa-eye"></i> Detail</a>
                                                         </div>
                                                     </div>
                                                 </td>
