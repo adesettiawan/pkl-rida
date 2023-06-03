@@ -187,6 +187,21 @@ if (session()->get('level') == 1) {
                     $routes->get('delete/(:num)', 'ReportPenelitian::delete/$1');
                 }
             );
+
+            // supervisi
+            $routes->group(
+                'supervisi',
+                static function ($routes) {
+                    $routes->get('/', 'Supervisi::index');
+                    $routes->get('add', 'Supervisi::add');
+                    $routes->post('store', 'Supervisi::store');
+                    $routes->post('verifikasiStatus/(:num)', 'Supervisi::verifikasiStatus/$1');
+                    $routes->get('detail/(:num)', 'Supervisi::detail/$1');
+                    $routes->get('edit/(:num)', 'Supervisi::edit/$1');
+                    $routes->post('update/(:num)', 'Supervisi::update/$1');
+                    $routes->get('delete/(:num)', 'Supervisi::delete/$1');
+                }
+            );
         }
     );
 }
@@ -307,6 +322,21 @@ if (session()->get('level') == 2) {
                     $routes->get('edit/(:num)', 'Peserta\ReportPenelitian::edit/$1');
                     $routes->post('update/(:num)', 'Peserta\ReportPenelitian::update/$1');
                     $routes->get('delete/(:num)', 'Peserta\ReportPenelitian::delete/$1');
+                }
+            );
+
+            // supervisi
+            $routes->group(
+                'supervisi',
+                static function ($routes) {
+                    $routes->get('/', 'Peserta\Supervisi::index');
+                    $routes->get('add', 'Peserta\Supervisi::add');
+                    $routes->post('store', 'Peserta\Supervisi::store');
+                    $routes->post('verifikasiToAdmin/(:num)', 'Peserta\Supervisi::verifikasiToAdmin/$1');
+                    $routes->get('detail/(:num)', 'Peserta\Supervisi::detail/$1');
+                    $routes->get('edit/(:num)', 'Peserta\Supervisi::edit/$1');
+                    $routes->post('update/(:num)', 'Peserta\Supervisi::update/$1');
+                    $routes->get('delete/(:num)', 'Peserta\Supervisi::delete/$1');
                 }
             );
         }

@@ -48,6 +48,11 @@ $url_menu = $uri->getSegment(2);
                     </ul>
                 </li>
 
+                <li class="menu-header">Supervisi</li>
+                <li class="dropdown <?= $url_menu == 'supervisi' || $url_menu == '' ? 'active' : '' ?>">
+                    <a href="<?= base_url('admin/supervisi') ?>" class="nav-link"><i data-feather="rss"></i><span>Supervisi</span></a>
+                </li>
+
                 <li class="menu-header">Users</li>
                 <li class="dropdown">
                     <a href="<?= base_url('admin/data_users') ?>" class="nav-link"><i data-feather="users"></i><span>Users</span></a>
@@ -95,6 +100,11 @@ $url_menu = $uri->getSegment(2);
                         <li <?= $url_menu == "laporan_kkn" ? 'class="active"' : '' ?>><a href="<?= base_url('user/laporan_kkn') ?>">KKN</a></li>
                         <li <?= $url_menu == "laporan_penelitian" ? 'class="active"' : '' ?>><a href="<?= base_url('user/laporan_penelitian') ?>">Penelitian</a></li>
                     </ul>
+                </li>
+
+                <li class="menu-header">Supervisi</li>
+                <li class="dropdown <?= $url_menu == 'supervisi' || $url_menu == '' ? 'active' : '' ?>">
+                    <a href="<?= base_url('user/supervisi') ?>" class="nav-link"><i data-feather="rss"></i><span>Supervisi</span></a>
                 </li>
             </ul>
         <?php } ?>
