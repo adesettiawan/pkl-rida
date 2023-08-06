@@ -90,7 +90,7 @@
                         </form>
                     </div>
                     <div class="mb-4 text-muted text-center">
-                        Already Registered? <a href="<?= base_url('/') ?>">Login</a>
+                        Sudah memiliki akun? <a href="<?= base_url('/') ?>">Masuk!</a>
                     </div>
                 </div>
             </div>

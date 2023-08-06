@@ -1,6 +1,9 @@
 <?= $this->extend('_layouts/app') ?>
 
 <?= $this->Section('content') ?>
+<?php
+$userLogin = session()->get('level');
+?>
 
 <div class="main-content">
     <section class="section">
@@ -11,7 +14,10 @@
                         <div class="card-header">
                             <h4>Data Surat Permohonan KKN</h4>
                             <div class="card-header-action">
-                                <a href="<?= base_url('admin/data_permohonan_kkn/add') ?>" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
+                                <a href="<?= base_url('admin/data_permohonan_kkn/exportPDF') ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white mr-2"><i class="fas fa-download"></i> &nbsp; Rekap Data</a>
+                                <?php if ($userLogin == 1) : ?>
+                                    <a href="<?= base_url('admin/data_permohonan_kkn/add') ?>" class="btn btn-primary"><i class="fas fa-plus"></i>&ensp;Tambah Data</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php
@@ -90,11 +96,13 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($permohonan['status'] == 1) { ?>
-                                                        <div class="badge badge-success badge-shadow">Approve</div>
+                                                        <div class="badge badge-primary badge-shadow">Diterima</div>
+                                                    <?php } elseif ($permohonan['status'] == 3) { ?>
+                                                        <div class="badge badge-success badge-shadow">Disetujui</div>
                                                     <?php } elseif ($permohonan['status'] == 2) { ?>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     <?php } else { ?>
-                                                        <div class="badge badge-danger badge-shadow">Rejected</div>
+                                                        <div class="badge badge-danger badge-shadow">Ditolak</div>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
@@ -103,12 +111,15 @@
                                                         <div class="dropdown-menu">
                                                             <a data-toggle="modal" style="cursor: pointer;" data-target="#staticBackdrop<?= $permohonan['id'] ?>" class="dropdown-item has-icon text-warning"><i class="fas fa-key"></i>
                                                                 Verifikasi</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="<?= base_url('admin/data_permohonan_kkn/edit/' . $permohonan['id']) ?>" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+                                                            <?php if ($userLogin == 1) : ?>
 
-                                                            <div class="dropdown-divider"></div>
-                                                            <a href="<?= base_url('admin/data_permohonan_kkn/delete/' . $permohonan['id']) ?>" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
-                                                                Delete</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a href="<?= base_url('admin/data_permohonan_kkn/edit/' . $permohonan['id']) ?>" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
+
+                                                                <div class="dropdown-divider"></div>
+                                                                <a href="<?= base_url('admin/data_permohonan_kkn/delete/' . $permohonan['id']) ?>" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
+                                                                    Delete</a>
+                                                            <?php endif; ?>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -141,25 +152,43 @@
                                 <label>Pilih Status</label>
                                 <select class="form-control" name="status">
                                     <?php if ($permohonan['status'] == 1) { ?>
-                                        <option value="1">Approve</option>
+                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 0) : ?>
+                                            <option value="3">Disetujui</option>
+                                        <?php endif; ?>
                                         <option value="2">Pending</option>
-                                        <option value="0">Rejected</option>
+                                        <option value="0">Ditolak</option>
+                                    <?php } elseif ($permohonan['status'] == 3) { ?>
+                                        <?php if ($userLogin == 0) : ?>
+                                            <option value="3">Disetujui</option>
+                                        <?php endif; ?>
+                                        <option value="1">Diterima</option>
+                                        <option value="2">Pending</option>
+                                        <option value="0">Ditolak</option>
                                     <?php } elseif ($permohonan['status'] == 2) { ?>
                                         <option value="2">Pending</option>
-                                        <option value="1">Approve</option>
-                                        <option value="0">Rejected</option>
+                                        <?php if ($userLogin == 0) : ?>
+                                            <option value="3">Disetujui</option>
+                                        <?php endif; ?>
+                                        <option value="1">Diterima</option>
+                                        <option value="0">Ditolak</option>
                                     <?php } else { ?>
-                                        <option value="0">Rejected</option>
-                                        <option value="1">Approve</option>
+                                        <option value="0">Ditolak</option>
+                                        <?php if ($userLogin == 0) : ?>
+                                            <option value="3">Disetujui</option>
+                                        <?php endif; ?>
+                                        <option value="1">Diterima</option>
                                         <option value="2">Pending</option>
                                     <?php } ?>
 
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Tanggal Diterima</label>
-                                <input id="tgl_diterima" type="date" class="form-control" name="tgl_diterima" value="<?= $permohonan['tgl_diterima'] != '0000-00-00' ? $permohonan['tgl_diterima'] : '' ?>">
-                            </div>
+                            <?php if ($userLogin == 1) : ?>
+                                <div class="form-group">
+                                    <label>Tanggal Diterima</label>
+                                    <input id="tgl_diterima" type="date" class="form-control" name="tgl_diterima" value="<?= $permohonan['tgl_diterima'] != '0000-00-00' ? $permohonan['tgl_diterima'] : '' ?>">
+                                </div>
+                            <?php endif ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

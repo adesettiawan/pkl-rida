@@ -98,6 +98,7 @@
                                         <label>Pilih Level</label>
                                         <select class="form-control" name="level">
                                             <option value="">Pilih Level Akun</option>
+                                            <option value="0">Pimpinan</option>
                                             <option value="1">Administrator</option>
                                             <option value="2">User</option>
                                         </select>
@@ -120,7 +121,7 @@
                                                 <img id="image-preview" src="https://pertaniansehat.com/v01/wp-content/uploads/2015/08/default-placeholder.png" style="margin-bottom: 10px; border: 1px solid #555; height: 180px; width: 180px; border-radius:10%" alt="image preview" />
                                             </div>
                                             <div class="col-8">
-                                                <input style="margin-top: 100px;" class="form-control mb-2" type="file" onchange="previewImage(this.value);" name="image" id="image" accept="image/*" onChange="validate(this.value)" />
+                                                <input style="margin-top: 100px; margin-left:90px" class="form-control mb-2" type="file" onchange="previewImage(this.value);" name="image" id="image" accept="image/*" onChange="validate(this.value)" />
                                                 <span style="color: red" id="message_error"></span>
                                             </div>
                                         </div>

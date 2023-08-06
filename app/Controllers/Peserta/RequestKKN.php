@@ -62,7 +62,7 @@ class RequestKKN extends BaseController
                 ]
             ],
             'no_surat' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[requests.no_surat]',
                 'errors' => [
                     'required' => '{field} required!'
                 ]
@@ -125,11 +125,11 @@ class RequestKKN extends BaseController
         $mail->Port = 465;
         $mail->SMTPSecure = 'ssl';
         $mail->SMTPAuth = true;
-        $mail->Username = 'adsttt00@gmail.com';
-        $mail->Password = 'hmpdidyptlgjebum';
+        $mail->Username = 'naprindaamelita@gmail.com';
+        $mail->Password = 'xipvlnozduofpysf';
 
         $mail->setFrom($data['email_ketua'], 'Surat Permohonan ' . $data['type']);
-        $mail->addAddress('adsttt00@gmail.com', 'Pemberitahuan Permohonan ' . $data['type']);
+        $mail->addAddress('naprindaamelita@gmail.com', 'Pemberitahuan Permohonan ' . $data['type']);
         $mail->isHTML(true);
         $mail->Subject = "Surat Permohonan " . $data['type'];
         $mail->Body = $message;
@@ -179,7 +179,7 @@ class RequestKKN extends BaseController
                 ]
             ],
             'no_surat' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[requests.no_surat]',
                 'errors' => [
                     'required' => '{field} required!'
                 ]

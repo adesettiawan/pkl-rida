@@ -97,11 +97,13 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($spv['status'] == 1) { ?>
-                                                        <div class="badge badge-success badge-shadow">Approve</div>
+                                                        <div class="badge badge-secondary badge-shadow">Ditinjau</div>
+                                                    <?php } elseif ($spv['status'] == 3) { ?>
+                                                        <div class="badge badge-success badge-shadow">Diterima</div>
                                                     <?php } elseif ($spv['status'] == 2) { ?>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     <?php } else { ?>
-                                                        <div class="badge badge-danger badge-shadow">Rejected</div>
+                                                        <div class="badge badge-danger badge-shadow">Ditolak</div>
                                                     <?php } ?>
                                                 </td>
 

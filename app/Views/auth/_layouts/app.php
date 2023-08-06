@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/components.css">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='<?= base_url() ?>assets/img/logo1.png' />
+    <link rel='shortcut icon' type='image/x-icon' href='<?= base_url() ?>assets/img/logorida.jpg' />
 </head>
 
 <body>

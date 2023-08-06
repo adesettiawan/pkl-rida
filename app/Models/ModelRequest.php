@@ -112,4 +112,76 @@ class ModelRequest extends Model
 
         return $data;
     }
+
+    public function get_chart_pkl_byInstitusi()
+    {
+        $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'PKL')
+            ->where('requests.status', '1')
+            ->groupBy('requests.nama_instansi')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_chart_kkn_byInstitusi()
+    {
+        $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'KKN')
+            ->where('requests.status', '1')
+            ->groupBy('requests.nama_instansi')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_chart_penelitian_byInstitusi()
+    {
+        $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'Penelitian')
+            ->where('requests.status', '1')
+            ->groupBy('requests.nama_instansi')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_chart_pkl_byYear()
+    {
+        $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, YEAR(requests.tgl_diterima) AS tahun, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'PKL')
+            ->where('requests.status', '1')
+            ->groupBy('YEAR(requests.tgl_diterima)')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_chart_kkn_byYear()
+    {
+        $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, YEAR(requests.tgl_diterima) AS tahun, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'KKN')
+            ->where('requests.status', '1')
+            ->groupBy('YEAR(requests.tgl_diterima)')
+            ->get()->getResultArray();
+
+        return $data;
+    }
+
+    public function get_chart_penelitian_byYear()
+    {
+        $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, YEAR(requests.tgl_diterima) AS tahun, users.name AS nama_ketua')->table('requests')
+            ->join('users', 'users.id = requests.user_id')
+            ->where('type', 'Penelitian')
+            ->where('requests.status', '1')
+            ->groupBy('YEAR(requests.tgl_diterima)')
+            ->get()->getResultArray();
+
+        return $data;
+    }
 }

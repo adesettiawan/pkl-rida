@@ -21,7 +21,7 @@ class RepliesPenelitian extends BaseController
     {
         $data = [
             'title' => 'Surat Balasan - Penelitian Bidang RIDA',
-            'data_balasan' => $this->balasan->get_byStatus_penelitian(),
+            'data_balasan' => $this->balasan->get_byUser_penelitian(),
         ];
         return view('peserta/replies/penelitian/index', $data);
     }

@@ -6,6 +6,11 @@ use App\Controllers\BaseController;
 use App\Models\ModelAuth;
 use App\Models\ModelReport;
 
+//PHP MAILER
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class ReportKKN extends BaseController
 {
     protected $laporan, $user;
@@ -66,22 +71,97 @@ class ReportKKN extends BaseController
             $file_reports->move(ROOTPATH . 'public/assets/file_reports/kkn');
         }
 
+        $status = 1;
+
         $this->laporan->insert([
             'type' => $this->request->getPost('type'),
             'user_id' => $this->request->getPost('user_id'),
             'filename' => $this->request->getPost('filename'),
-            'status' => 2,
+            'status' => $status,
             'file_reports' => $file_reports->getName(),
         ]);
+
+        if ($status == 1) {
+            $admin = $this->user->get_user_admin();
+            $pimpinan = $this->user->get_user_pimpinan();
+            $data = $this->laporan->get_detail_kkn($this->request->getPost('user_id'));
+
+            $message = "PKL Bidang RIDA : " . $admin['name'] . " Ingin menginformasikan telah menerima pengajuan laporan " . $this->request->getPost('type') . " " . $data['nama_ketua'] . ". Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!";
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 1;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'naprindaamelita@gmail.com';
+            $mail->Password = 'xipvlnozduofpysf';
+
+            $mail->setFrom($admin['email'], 'Pengajuan laporan ' . $this->request->getPost('type'));
+            $mail->addAddress($pimpinan['email'], 'Pemberitahuan Pengajuan laporan ' . $this->request->getPost('type'));
+            $mail->isHTML(true);
+            $mail->Subject = "Pengajuan laporan " . $this->request->getPost('type');
+            $mail->Body = $message;
+
+            $mail->AltBody = 'HTML messaging not supported';
+
+            if (!$mail->send()) {
+                echo 'Email not sent an error was encountered';
+            } else {
+                echo 'Email message has been sent.';
+            }
+
+            $mail->smtpClose();
+        }
+
         session()->setFlashdata('message', 'Save data successfully!..');
         return redirect()->to('admin/laporan_kkn');
     }
 
     public function verifikasiStatus($id)
     {
+        $status = $this->request->getPost('status');
+
         $this->laporan->update($id, [
-            'status' => $this->request->getPost('status'),
+            'status' => $status,
         ]);
+
+        if ($status == 1) {
+            $admin = $this->user->get_user_admin();
+            $pimpinan = $this->user->get_user_pimpinan();
+            $data = $this->laporan->get_detail_kkn($id);
+
+            $message = "PKL Bidang RIDA : " . $admin['name'] . " Ingin menginformasikan telah menerima pengajuan laporan " . $data['type'] . " " . $data['nama_ketua'] . ". Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!";
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 1;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'naprindaamelita@gmail.com';
+            $mail->Password = 'xipvlnozduofpysf';
+
+            $mail->setFrom($admin['email'], 'Pengajuan laporan ' . $data['type']);
+            $mail->addAddress($pimpinan['email'], 'Pemberitahuan Pengajuan laporan ' . $data['type']);
+            $mail->isHTML(true);
+            $mail->Subject = "Pengajuan laporan " . $data['type'];
+            $mail->Body = $message;
+
+            $mail->AltBody = 'HTML messaging not supported';
+
+            if (!$mail->send()) {
+                echo 'Email not sent an error was encountered';
+            } else {
+                echo 'Email message has been sent.';
+            }
+
+            $mail->smtpClose();
+        }
 
         session()->setFlashdata('message', 'Update status successfully!..');
         return redirect()->to('admin/laporan_kkn');
@@ -160,5 +240,19 @@ class ReportKKN extends BaseController
 
         session()->setFlashdata('message', 'Data Deleted Successfully');
         return redirect()->to(base_url('admin/laporan_kkn'));
+    }
+
+    public function exportPDF()
+    {
+        $data = [
+            'title' => 'Rekapitulasi Laporan KKN - Bidang RIDA',
+            'data_laporan' => $this->laporan->get_all_kkn(),
+        ];
+
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml(view('backend/rekap/kkn/laporan', $data));
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        $dompdf->stream(date('d-m-Y') . "-rekap-laporan-kkn.pdf", array('Attachment' => 0));
     }
 }

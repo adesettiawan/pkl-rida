@@ -69,14 +69,20 @@
                                                 <td><?= $balasan['nama_ketua'] ?></td>
 
                                                 <td><?= $balasan['nama_instansi'] ?></td>
-                                                <td><a href="<?= base_url('assets/file_replies/penelitian/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
+                                                <?php if ($balasan['status'] == 3) { ?>
+                                                    <td><a href="<?= base_url('assets/file_replies/penelitian/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
+                                                <?php } else { ?>
+                                                    <td>-</td>
+                                                <?php } ?>
                                                 <td>
                                                     <?php if ($balasan['status'] == 1) { ?>
-                                                        <div class="badge badge-success badge-shadow">Approve</div>
+                                                        <div class="badge badge-secondary badge-shadow">Ditinjau</div>
+                                                    <?php } elseif ($balasan['status'] == 3) { ?>
+                                                        <div class="badge badge-success badge-shadow">Diterima</div>
                                                     <?php } elseif ($balasan['status'] == 2) { ?>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     <?php } else { ?>
-                                                        <div class="badge badge-danger badge-shadow">Rejected</div>
+                                                        <div class="badge badge-danger badge-shadow">Ditolak</div>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
