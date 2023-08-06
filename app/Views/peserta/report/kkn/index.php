@@ -71,11 +71,13 @@
                                                 <td><a href="<?= base_url('assets/file_reports/kkn/' . $rpt['file_reports']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white"><i class="fas fa-download"></i></a></td>
                                                 <td>
                                                     <?php if ($rpt['status'] == 1) { ?>
-                                                        <div class="badge badge-success badge-shadow">Approve</div>
+                                                        <div class="badge badge-secondary badge-shadow">Ditinjau</div>
+                                                    <?php } elseif ($rpt['status'] == 3) { ?>
+                                                        <div class="badge badge-success badge-shadow">Diterima</div>
                                                     <?php } elseif ($rpt['status'] == 2) { ?>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     <?php } else { ?>
-                                                        <div class="badge badge-danger badge-shadow">Rejected</div>
+                                                        <div class="badge badge-danger badge-shadow">Ditolak</div>
                                                     <?php } ?>
                                                 </td>
                                                 <td>

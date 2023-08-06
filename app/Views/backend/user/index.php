@@ -65,7 +65,11 @@
                                                     <?= $i++ ?>
                                                 </td>
                                                 <td>
-                                                    <img alt="image" src="<?= base_url() ?>assets/img/<?= $user['image'] ?>" width="35">
+                                                    <?php if ($user['image'] != '') { ?>
+                                                        <img alt="image" src="<?= base_url() ?>assets/img/<?= $user['image'] ?>" width="35">
+                                                    <?php } else { ?>
+                                                        <img alt="image" src="<?= base_url() ?>assets/img/profile.png" width=" 35">
+                                                    <?php } ?>
                                                 </td>
                                                 <td><?= $user['npm'] ?></td>
                                                 <td class="align-middle">
@@ -78,6 +82,8 @@
                                                 <td>
                                                     <?php if ($user['level'] == 1) { ?>
                                                         <div class="badge badge-primary badge-shadow">Admin</div>
+                                                    <?php } else if ($user['level'] == 0) { ?>
+                                                        <div class="badge badge-primary badge-shadow">Pimpinan</div>
                                                     <?php } else { ?>
                                                         <div class="badge badge-warning badge-shadow">User</div>
                                                     <?php } ?>

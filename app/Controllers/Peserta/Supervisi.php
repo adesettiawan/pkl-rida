@@ -108,11 +108,11 @@ class Supervisi extends BaseController
         $mail->Port = 465;
         $mail->SMTPSecure = 'ssl';
         $mail->SMTPAuth = true;
-        $mail->Username = 'adsttt00@gmail.com';
-        $mail->Password = 'hmpdidyptlgjebum';
+        $mail->Username = 'naprindaamelita@gmail.com';
+        $mail->Password = 'xipvlnozduofpysf';
 
         $mail->setFrom($data['email_ketua'], 'Pengajuan Supervisi ' . $data['type']);
-        $mail->addAddress('adsttt00@gmail.com', 'Pemberitahuan Pengajuan Supervisi ' . $data['type']);
+        $mail->addAddress('naprindaamelita@gmail.com', 'Pemberitahuan Pengajuan Supervisi ' . $data['type']);
         $mail->isHTML(true);
         $mail->Subject = "Pengajuan Supervisi " . $data['type'];
         $mail->Body = $message;

@@ -6,6 +6,11 @@ use App\Controllers\BaseController;
 use App\Models\ModelAuth;
 use App\Models\ModelReplies;
 
+//PHP MAILER
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class RepliesPKL extends BaseController
 {
     protected $balasan, $user;
@@ -45,7 +50,7 @@ class RepliesPKL extends BaseController
                 ]
             ],
             'no_surat' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[replies.no_surat]',
                 'errors' => [
                     'required' => '{field} required!'
                 ]
@@ -72,23 +77,98 @@ class RepliesPKL extends BaseController
             $file_replies->move(ROOTPATH . 'public/assets/file_replies/pkl');
         }
 
+        $status = 1;
+
         $this->balasan->insert([
             'type' => $this->request->getPost('type'),
             'user_id' => $this->request->getPost('user_id'),
             'no_surat' => $this->request->getPost('no_surat'),
             'nama_surat' => $this->request->getPost('nama_surat'),
-            'status' => 1,
+            'status' => $status,
             'file_replies' => $file_replies->getName(),
         ]);
+
+        if ($status == 1) {
+            $admin = $this->user->get_user_admin();
+            $pimpinan = $this->user->get_user_pimpinan();
+            $data = $this->balasan->get_detail_pkl($this->request->getPost('user_id'));
+
+            $message = "PKL Bidang RIDA : " . $admin['name'] . " Ingin menginformasikan telah membuat surat balasan " . $this->request->getPost('type') . " " . $data['nama_ketua'] . ". Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!";
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 1;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'naprindaamelita@gmail.com';
+            $mail->Password = 'xipvlnozduofpysf';
+
+            $mail->setFrom($admin['email'], 'Pengajuan surat balasan ' . $this->request->getPost('type'));
+            $mail->addAddress($pimpinan['email'], 'Pemberitahuan Pengajuan surat balasan ' . $this->request->getPost('type'));
+            $mail->isHTML(true);
+            $mail->Subject = "Pengajuan surat balasan " . $this->request->getPost('type');
+            $mail->Body = $message;
+
+            $mail->AltBody = 'HTML messaging not supported';
+
+            if (!$mail->send()) {
+                echo 'Email not sent an error was encountered';
+            } else {
+                echo 'Email message has been sent.';
+            }
+
+            $mail->smtpClose();
+        }
+
         session()->setFlashdata('message', 'Save data successfully!..');
         return redirect()->to('admin/data_balasan_pkl');
     }
 
     public function verifikasiStatus($id)
     {
+        $status = $this->request->getPost('status');
+
         $this->balasan->update($id, [
-            'status' => $this->request->getPost('status'),
+            'status' => $status,
         ]);
+
+        if ($status == 1) {
+            $admin = $this->user->get_user_admin();
+            $pimpinan = $this->user->get_user_pimpinan();
+            $data = $this->balasan->get_detail_pkl($id);
+
+            $message = "PKL Bidang RIDA : " . $admin['name'] . " Ingin menginformasikan telah membuat surat balasan " . $data['type'] . " " . $data['nama_ketua'] . ". Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!";
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 1;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'naprindaamelita@gmail.com';
+            $mail->Password = 'xipvlnozduofpysf';
+
+            $mail->setFrom($admin['email'], 'Pengajuan surat balasan ' . $data['type']);
+            $mail->addAddress($pimpinan['email'], 'Pemberitahuan Pengajuan surat balasan ' . $data['type']);
+            $mail->isHTML(true);
+            $mail->Subject = "Pengajuan surat balasan " . $data['type'];
+            $mail->Body = $message;
+
+            $mail->AltBody = 'HTML messaging not supported';
+
+            if (!$mail->send()) {
+                echo 'Email not sent an error was encountered';
+            } else {
+                echo 'Email message has been sent.';
+            }
+
+            $mail->smtpClose();
+        }
 
         session()->setFlashdata('message', 'Update status successfully!..');
         return redirect()->to('admin/data_balasan_pkl');
@@ -174,5 +254,19 @@ class RepliesPKL extends BaseController
 
         session()->setFlashdata('message', 'Data Deleted Successfully');
         return redirect()->to(base_url('admin/data_balasan_pkl'));
+    }
+
+    public function exportPDF()
+    {
+        $data = [
+            'title' => 'Rekapitulasi Surat Balasan PKL - Bidang RIDA',
+            'data_balasan' => $this->balasan->get_all_pkl(),
+        ];
+
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml(view('backend/rekap/pkl/balasan', $data));
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        $dompdf->stream(date('d-m-Y') . "-rekap-surat-balasan-pkl.pdf", array('Attachment' => 0));
     }
 }

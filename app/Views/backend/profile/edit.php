@@ -62,8 +62,29 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-group-default">
+                                                    <label>NIM</label>
+                                                    <input id="nim" name="npm" value="<?= $profile['npm'] ?>" type="text" class="form-control" placeholder="fill nim">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-default">
                                                     <label>No. Handphone</label>
                                                     <input id="telp" name="telp" value="<?= $profile['telp'] ?>" type="text" class="form-control" placeholder="fill telp">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Periode PKL</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-group-default">
+                                                            <input id="periodeawal" name="periodeawal" value="<?= $profile['periodeawal'] != '0000-00-00' ? $profile['periodeawal'] : '' ?>" type="date" class="form-control" placeholder="fill periode awal">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-group-default">
+                                                            <input id="periodeakhir" name="periodeakhir" value="<?= $profile['periodeakhir'] != '0000-00-00' ? $profile['periodeakhir'] : '' ?>" type="date" class="form-control" placeholder="fill periode akhir">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -77,8 +98,8 @@
                                     </div>
                                     <div class="col-md-10 pr-0 mt-5">
                                         <div class="form-group form-group-default">
-                                            <label>Upload Image</label>
-                                            <input style="width: 98%;" id="image" name="image" onchange="previewImage(this.value);" accept="image/*" onChange="validate(this.value)" type="file" value="<?= $profile['image'] ?>" class="form-control" placeholder="fill image">
+                                            <label style="margin-left: 30px">Upload Image</label>
+                                            <input style="width: 94%; margin-left: 30px;" id="image" name="image" onchange="previewImage(this.value);" accept="image/*" onChange="validate(this.value)" type="file" value="<?= $profile['image'] ?>" class="form-control" placeholder="fill image">
                                             <span style="color: red" id="message_error"></span>
                                         </div>
                                     </div>

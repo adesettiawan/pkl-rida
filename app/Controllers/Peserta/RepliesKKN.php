@@ -21,7 +21,7 @@ class RepliesKKN extends BaseController
     {
         $data = [
             'title' => 'Surat Balasan - KKN Bidang RIDA',
-            'data_balasan' => $this->balasan->get_byStatus_kkn(),
+            'data_balasan' => $this->balasan->get_byUser_kkn(),
         ];
         return view('peserta/replies/kkn/index', $data);
     }

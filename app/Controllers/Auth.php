@@ -69,10 +69,15 @@ class Auth extends BaseController
                         'status' => $row['status'],
                         'level' => $row['level'],
                         'ktm' => $row['ktm'],
+                        'periodeawal' => $row['periodeawal'],
+                        'periodeakhir' => $row['periodeakhir'],
                         'image' => $row['image'],
                     ];
                     session()->set($data);
                     if (session()->get('level') == 1) {
+                        session()->setFlashdata('message', 'Login successfully');
+                        return redirect()->to('admin/dashboard');
+                    } elseif (session()->get('level') == 0 && session()->get('status') == 1) {
                         session()->setFlashdata('message', 'Login successfully');
                         return redirect()->to('admin/dashboard');
                     } elseif (session()->get('level') == 2 && session()->get('status') == 1) {
@@ -106,6 +111,8 @@ class Auth extends BaseController
             'status',
             'level',
             'ktm',
+            'periodeawal',
+            'periodeakhir',
             'image',
         ];
         session()->setFlashdata('message', 'Logout successfully');
@@ -172,7 +179,7 @@ class Auth extends BaseController
             ],
             'ktm' => [
                 'uploaded[ktm]',
-                'mime_in[ktm, image/png, image/jpg,image/jpeg, image/gif]',
+                // 'mime_in[ktm, image/png, image/jpg,image/jpeg, image/gif]',
                 'max_size[ktm, 4096]',
             ],
 
@@ -184,6 +191,9 @@ class Auth extends BaseController
         $ktm = $this->request->getFile('ktm');
         if ($ktm != '') {
             $ktm->move(ROOTPATH . 'public/assets/ktm/');
+            $imgKtm = $ktm->getName();
+        } else {
+            $imgKtm = '';
         }
 
         $pw = $this->request->getPost('password');
@@ -194,10 +204,10 @@ class Auth extends BaseController
             'instansi_name' => $this->request->getPost('instansi_name'),
             'password' => password_hash($pw, PASSWORD_DEFAULT),
             'npm' => $this->request->getPost('npm'),
-            'image' => 'profile.jpg',
+            'image' => '',
             'level' => 2,
             'status' => 2,
-            'ktm' => $ktm->getName(),
+            'ktm' => $imgKtm,
         ]);
 
         $message = "Perkenalkan Saya " . $this->request->getPost('name') . ", asal instansi " . $this->request->getPost('instansi_name') . " Ingin menginformasikan telah melakukan register dan meminta untuk aktivasi akun login. Terimakasih!";
@@ -210,11 +220,11 @@ class Auth extends BaseController
         $mail->Port = 465;
         $mail->SMTPSecure = 'ssl';
         $mail->SMTPAuth = true;
-        $mail->Username = 'adsttt00@gmail.com';
-        $mail->Password = 'hmpdidyptlgjebum';
+        $mail->Username = 'naprindaamelita@gmail.com';
+        $mail->Password = 'xipvlnozduofpysf';
 
         $mail->setFrom($this->request->getPost('email'), 'Surat Permohonan Aktivasi Akun');
-        $mail->addAddress('adsttt00@gmail.com', 'Pemberitahuan Permohonan Aktivasi Akun');
+        $mail->addAddress('naprindaamelita@gmail.com', 'Pemberitahuan Permohonan Aktivasi Akun');
         $mail->isHTML(true);
         $mail->Subject = "Surat Permohonan  Aktivasi Akun";
         $mail->Body = $message;
@@ -257,7 +267,7 @@ class Auth extends BaseController
                 ]
             ],
             'image' => [
-                'mime_in[image, image/png, image/jpg,image/jpeg, image/gif]',
+                // 'mime_in[image, image/png, image/jpg,image/jpeg, image/gif]',
                 'max_size[image, 4096]',
             ],
         ])) {
@@ -282,10 +292,14 @@ class Auth extends BaseController
             $new_image = $old_profile;
         }
 
+        $periodeawal = $this->request->getPost('periodeawal');
+        $periodeakhir = $this->request->getPost('periodeakhir');
 
         $this->auth->update($id, [
             'name' => $this->request->getPost('name'),
             'telp' => $this->request->getPost('telp'),
+            'periodeawal' => date('Y-m-d', strtotime($periodeawal)),
+            'periodeakhir' => date('Y-m-d', strtotime($periodeakhir)),
             'image' => $new_image
         ]);
 
@@ -333,5 +347,85 @@ class Auth extends BaseController
 
         session()->setFlashdata('message', 'Update password successfully!..');
         return redirect()->to('profile/' . session()->get('id'));
+    }
+
+    public function forgot_password()
+    {
+        $data = [
+            'title' => 'Forgot Password - PKL Bidang RIDA',
+        ];
+
+        return view('auth/forgot', $data);
+    }
+
+    public function forgot_password_processed()
+    {
+
+        if (!$this->validate([
+            'email' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} required!'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+        $email = $this->request->getPost('email');
+
+        $findemail = $this->auth->forgotPassword($email);
+        if ($findemail) {
+            $this->auth->sendPassword($findemail);
+            session()->setFlashdata('message', 'Send Link Forgot password successfully!..');
+            return redirect()->to('forgot-password');
+        } else {
+            session()->setFlashdata('messages', 'Email not found!..');
+            return redirect()->to('forgot-password');
+        }
+    }
+
+    public function new_password($email)
+    {
+        $data = [
+            'title' => 'Reset Password - PKL Bidang RIDA',
+            'user' => $this->auth->forgotPassword($email),
+
+        ];
+
+        return view('auth/newpassword', $data);
+    }
+
+    public function new_password_processed($email)
+    {
+        if (!$this->validate([
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} required!'
+                ]
+            ],
+            'repassword' => [
+                'rules' => 'required|matches[password]',
+                'errors' => [
+                    'required' => '{field} required',
+                    'matches' => '{field} is not the same!'
+                ]
+            ],
+
+        ])) {
+            session()->setFlashdata('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput();
+        }
+
+
+        $newPw = $this->request->getPost('password');
+        $newPassword = password_hash($newPw, PASSWORD_DEFAULT);
+
+        $this->auth->updatePassword($email, $newPassword);
+
+        session()->setFlashdata('message', 'Update password successfully!..');
+        return redirect()->to('/');
     }
 }

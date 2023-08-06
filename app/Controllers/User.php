@@ -42,7 +42,7 @@ class User extends BaseController
                 ]
             ],
             'email' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[users.email]',
                 'errors' => [
                     'required' => '{field} required!'
                 ]
@@ -90,6 +90,22 @@ class User extends BaseController
             return redirect()->back()->withInput();
         }
 
+        $image = $this->request->getFile('image');
+        if ($image != '') {
+            $image->move(ROOTPATH . 'public/assets/img');
+            $imgName = $image->getName();
+        } else {
+            $imgName = '';
+        }
+
+        $ktm = $this->request->getFile('ktm');
+        if ($ktm != '') {
+            $ktm->move(ROOTPATH . 'public/assets/img');
+            $imgKtm = $ktm->getName();
+        } else {
+            $imgKtm = '';
+        }
+
         $pw = $this->request->getPost('password');
         $this->user->insert([
             'name' => $this->request->getPost('name'),
@@ -99,9 +115,9 @@ class User extends BaseController
             'level' => $this->request->getPost('level'),
             'status' => $this->request->getPost('status'),
             'npm' => $this->request->getPost('npm'),
-            'ktm' => $this->request->getPost('ktm') != '' ? $this->request->getPost('ktm') : '',
             'password' => password_hash($pw, PASSWORD_DEFAULT),
-            'image' => 'profile.jpg'
+            'ktm' => $imgKtm,
+            'image' => $imgName,
         ]);
         session()->setFlashdata('message', 'Save data successfully!..');
         return redirect()->to('admin/data_users');
@@ -157,7 +173,7 @@ class User extends BaseController
                 ]
             ],
             'ktm' => [
-                'mime_in[ktm, image/png, image/jpg,image/jpeg, image/gif]',
+                // 'mime_in[ktm, image/png, image/jpg,image/jpeg, image/gif]',
                 'max_size[ktm, 4096]',
             ],
             // 'image' => [

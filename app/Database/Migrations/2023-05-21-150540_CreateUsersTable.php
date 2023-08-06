@@ -45,7 +45,7 @@ class CreateUsersTable extends Migration
             ],
             'level' => [
                 'type'           => 'INT',
-                'constraint'     => 5, // level 1 admin, level 2 users
+                'constraint'     => 5, // level 1 admin, level 2 users, level 0 pimpinan
             ],
             'ktm' => [
                 'type'           => 'VARCHAR',
@@ -54,6 +54,12 @@ class CreateUsersTable extends Migration
             'image' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255,
+            ],
+            'periodeawal' => [
+                'type'           => 'DATE',
+            ],
+            'periodeakhir' => [
+                'type'           => 'DATE',
             ],
 
         ]);

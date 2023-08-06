@@ -6,6 +6,11 @@ use App\Controllers\BaseController;
 use App\Models\ModelAuth;
 use App\Models\ModelSupervisi;
 
+//PHP MAILER
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Supervisi extends BaseController
 {
     protected $supervisi, $user;
@@ -75,24 +80,96 @@ class Supervisi extends BaseController
             return redirect()->back()->withInput();
         }
 
-
+        $status = 1;
         $this->supervisi->insert([
             'user_id' => $this->request->getPost('user_id'),
             'title' => $this->request->getPost('title'),
             'tgl_supervisi' => date('Y-m-d', strtotime($this->request->getPost('tgl_supervisi'))),
             'jam_supervisi' => $this->request->getPost('jam_supervisi'),
             'type' => $this->request->getPost('type'),
-            'status' => 2,
+            'status' => $status,
         ]);
+
+        if ($status == 1) {
+            $admin = $this->user->get_user_admin();
+            $pimpinan = $this->user->get_user_pimpinan();
+            $data = $this->supervisi->get_detail_supervisi($this->request->getPost('user_id'));
+
+            $message = "PKL Bidang RIDA : " . $admin['name'] . " Ingin menginformasikan telah menerima pengajuan supervisi " . $this->request->getPost('type') . " " . $data['nama_ketua'] . ". Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!";
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 1;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'naprindaamelita@gmail.com';
+            $mail->Password = 'xipvlnozduofpysf';
+
+            $mail->setFrom($admin['email'], 'Pengajuan Supervisi ' . $this->request->getPost('type'));
+            $mail->addAddress($pimpinan['email'], 'Pemberitahuan Pengajuan Supervisi ' . $this->request->getPost('type'));
+            $mail->isHTML(true);
+            $mail->Subject = "Pengajuan Supervisi " . $this->request->getPost('type');
+            $mail->Body = $message;
+
+            $mail->AltBody = 'HTML messaging not supported';
+
+            if (!$mail->send()) {
+                echo 'Email not sent an error was encountered';
+            } else {
+                echo 'Email message has been sent.';
+            }
+
+            $mail->smtpClose();
+        }
+
         session()->setFlashdata('message', 'Save data successfully!..');
         return redirect()->to('admin/supervisi');
     }
 
     public function verifikasiStatus($id)
     {
+        $status = $this->request->getPost('status');
         $this->supervisi->update($id, [
-            'status' => $this->request->getPost('status'),
+            'status' => $status,
         ]);
+
+        if ($status == 1) {
+            $admin = $this->user->get_user_admin();
+            $pimpinan = $this->user->get_user_pimpinan();
+            $data = $this->supervisi->get_detail_supervisi($id);
+
+            $message = "PKL Bidang RIDA : " . $admin['name'] . " Ingin menginformasikan telah menerima pengajuan supervisi " . $data['type'] . " " . $data['nama_ketua'] . ". Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!";
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 1;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'naprindaamelita@gmail.com';
+            $mail->Password = 'xipvlnozduofpysf';
+
+            $mail->setFrom($admin['email'], 'Pengajuan Supervisi ' . $data['type']);
+            $mail->addAddress($pimpinan['email'], 'Pemberitahuan Pengajuan Supervisi ' . $data['type']);
+            $mail->isHTML(true);
+            $mail->Subject = "Pengajuan Supervisi " . $data['type'];
+            $mail->Body = $message;
+
+            $mail->AltBody = 'HTML messaging not supported';
+
+            if (!$mail->send()) {
+                echo 'Email not sent an error was encountered';
+            } else {
+                echo 'Email message has been sent.';
+            }
+
+            $mail->smtpClose();
+        }
 
         session()->setFlashdata('message', 'Update status successfully!..');
         return redirect()->to('admin/supervisi');

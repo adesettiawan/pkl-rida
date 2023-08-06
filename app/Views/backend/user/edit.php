@@ -91,8 +91,14 @@
                                             <option value="">Pilih Level Akun</option>
                                             <?php if ($user['level'] == 1) { ?>
                                                 <option selected value="1">Administrator</option>
+                                                <option value="0">Pimpinan</option>
+                                                <option value="2">User</option>
+                                            <?php } else if ($user['level'] == 0) { ?>
+                                                <option selected value="0">Pimpinan</option>
+                                                <option value="1">Administrator</option>
                                                 <option value="2">User</option>
                                             <?php } else { ?>
+                                                <option value="0">Pimpinan</option>
                                                 <option value="1">Administrator</option>
                                                 <option selected value="2">User</option>
                                             <?php } ?>
@@ -125,7 +131,7 @@
                                                 <?php } ?>
                                             </div>
                                             <div class="col-8">
-                                                <input style="margin-top: 100px;" value="<?= $user['image'] ?>" class="form-control mb-2" type="file" onchange="previewImage(this.value);" name="image" id="image" accept="image/*" onChange="validate(this.value)" />
+                                                <input style="margin-top: 100px; margin-left: 60px;" value="<?= $user['image'] ?>" class="form-control mb-2" type="file" onchange="previewImage(this.value);" name="image" id="image" accept="image/*" onChange="validate(this.value)" />
                                                 <span style="color: red" id="message_error"></span>
                                             </div>
                                         </div>

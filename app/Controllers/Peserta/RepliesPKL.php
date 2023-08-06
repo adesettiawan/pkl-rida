@@ -21,7 +21,7 @@ class RepliesPKL extends BaseController
     {
         $data = [
             'title' => 'Surat Balasan - PKL Bidang RIDA',
-            'data_balasan' => $this->balasan->get_byStatus_pkl(),
+            'data_balasan' => $this->balasan->get_byUser_pkl(),
         ];
         return view('peserta/replies/pkl/index', $data);
     }
