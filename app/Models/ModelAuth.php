@@ -26,6 +26,7 @@ class ModelAuth extends Model
     {
         $data = $this->db->table('users')
             ->where('status', '1')
+            ->where('level', '2')
             ->get()->getResultArray();
 
         return $data;
