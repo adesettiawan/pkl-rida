@@ -80,7 +80,9 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <a href="<?= base_url('assets/file_replies/penelitian/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-primary mr-1">Unduh Surat Balasan</a>
+                            <?php if ($balasan['status'] == 3) { ?>
+                                <a href="<?= base_url('assets/file_replies/penelitian/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-primary mr-1">Unduh Surat Balasan</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
