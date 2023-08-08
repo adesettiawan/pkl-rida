@@ -1,0 +1,110 @@
+INFO - 2023-08-08 21:36:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:36:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-08 21:37:58 --> SMTP Error: Could not connect to SMTP host. Failed to connect to server
+in VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php on line 2233.
+ 1 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(2019): PHPMailer\PHPMailer\PHPMailer->smtpConnect([])
+ 2 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1678): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Tue, 8 Aug 2023 21:37:58 +0700
+To: Pemberitahuan Pengajuan laporan PKL <pimpinan@gmail.com>
+From: Pengajuan laporan PKL <admin@gmail.com>
+Subject: Pengajuan laporan PKL
+Message-ID: <xFfpWbV0HhFBxQYz03MHwygEgHfYWuzpTiVj3mtO1I@localhost>
+X-Mailer: PHPMailer 6.8.0 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="b1=_xFfpWbV0HhFBxQYz03MHwygEgHfYWuzpTiVj3mtO1I"
+Content-Transfer-Encoding: 8bit
+
+', '--b1=_xFfpWbV0HhFBxQYz03MHwygEgHfYWuzpTiVj3mtO1I
+Content-Type: text/plain; charset=us-ascii
+
+HTML messaging not supported
+
+--b1=_xFfpWbV0HhFBxQYz03MHwygEgHfYWuzpTiVj3mtO1I
+Content-Type: text/html; charset=us-ascii
+
+PKL Bidang RIDA : Administrator Ingin menginformasikan telah menerima pengajuan laporan PKL Adeset. Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!
+
+
+--b1=_xFfpWbV0HhFBxQYz03MHwygEgHfYWuzpTiVj3mtO1I--
+')
+ 3 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1516): PHPMailer\PHPMailer\PHPMailer->postSend()
+ 4 APPPATH\Controllers\ReportPKL.php(157): PHPMailer\PHPMailer\PHPMailer->send()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ReportPKL->verifikasiStatus('4')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReportPKL))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-08-08 21:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:38:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:38:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:38:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:38:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:39:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-08 21:40:02 --> SMTP Error: Could not connect to SMTP host. Failed to connect to server
+in VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php on line 2233.
+ 1 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(2019): PHPMailer\PHPMailer\PHPMailer->smtpConnect([])
+ 2 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1678): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Tue, 8 Aug 2023 21:40:02 +0700
+To: Pemberitahuan Pengajuan laporan PKL <pimpinan@gmail.com>
+From: Pengajuan laporan PKL <admin@gmail.com>
+Subject: Pengajuan laporan PKL
+Message-ID: <DA0CIrEbdt8Rut4PDxOZEmEAs9oAMw5AuTdrQM91k@localhost>
+X-Mailer: PHPMailer 6.8.0 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="b1=_DA0CIrEbdt8Rut4PDxOZEmEAs9oAMw5AuTdrQM91k"
+Content-Transfer-Encoding: 8bit
+
+', '--b1=_DA0CIrEbdt8Rut4PDxOZEmEAs9oAMw5AuTdrQM91k
+Content-Type: text/plain; charset=us-ascii
+
+HTML messaging not supported
+
+--b1=_DA0CIrEbdt8Rut4PDxOZEmEAs9oAMw5AuTdrQM91k
+Content-Type: text/html; charset=us-ascii
+
+PKL Bidang RIDA : Administrator Ingin menginformasikan telah menerima pengajuan laporan PKL Adeset. Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!
+
+
+--b1=_DA0CIrEbdt8Rut4PDxOZEmEAs9oAMw5AuTdrQM91k--
+')
+ 3 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1516): PHPMailer\PHPMailer\PHPMailer->postSend()
+ 4 APPPATH\Controllers\ReportPKL.php(157): PHPMailer\PHPMailer\PHPMailer->send()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ReportPKL->verifikasiStatus('4')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReportPKL))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-08-08 21:40:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:40:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-08 21:44:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
