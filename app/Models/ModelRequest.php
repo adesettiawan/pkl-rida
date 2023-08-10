@@ -118,7 +118,7 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'PKL')
-            ->where('requests.status', '1')
+            ->where('requests.status', '3')
             ->groupBy('requests.nama_instansi')
             ->get()->getResultArray();
 
@@ -130,7 +130,7 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'KKN')
-            ->where('requests.status', '1')
+            ->where('requests.status', '3')
             ->groupBy('requests.nama_instansi')
             ->get()->getResultArray();
 
@@ -142,7 +142,7 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'Penelitian')
-            ->where('requests.status', '1')
+            ->where('requests.status', '3')
             ->groupBy('requests.nama_instansi')
             ->get()->getResultArray();
 
@@ -154,7 +154,7 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, YEAR(requests.tgl_diterima) AS tahun, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'PKL')
-            ->where('requests.status', '1')
+            ->where('requests.status', '3')
             ->groupBy('YEAR(requests.tgl_diterima)')
             ->get()->getResultArray();
 
@@ -166,7 +166,7 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, YEAR(requests.tgl_diterima) AS tahun, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'KKN')
-            ->where('requests.status', '1')
+            ->where('requests.status', '3')
             ->groupBy('YEAR(requests.tgl_diterima)')
             ->get()->getResultArray();
 
@@ -178,7 +178,7 @@ class ModelRequest extends Model
         $data = $this->select('requests.*, COUNT(requests.id) AS jumlah, YEAR(requests.tgl_diterima) AS tahun, users.name AS nama_ketua')->table('requests')
             ->join('users', 'users.id = requests.user_id')
             ->where('type', 'Penelitian')
-            ->where('requests.status', '1')
+            ->where('requests.status', '3')
             ->groupBy('YEAR(requests.tgl_diterima)')
             ->get()->getResultArray();
 
