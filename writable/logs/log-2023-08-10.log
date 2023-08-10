@@ -1,0 +1,91 @@
+INFO - 2023-08-10 20:51:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:53:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-08-10 20:53:57 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'db_eform', 3306, '', 0)
+#1 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\pkl-rida\system\Model.php(268): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\pkl-rida\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pkl-rida\app\Controllers\Auth.php(53): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(934): App\Controllers\Auth->login_processed()
+#8 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pkl-rida\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\pkl-rida\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\pkl-rida\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\pkl-rida\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\pkl-rida\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\pkl-rida\system\Model.php(268): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\pkl-rida\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\pkl-rida\app\Controllers\Auth.php(53): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(934): App\Controllers\Auth->login_processed()
+#7 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\pkl-rida\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\pkl-rida\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\pkl-rida\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2023-08-10 20:53:57 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(53): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Auth->login_processed()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-08-10 20:54:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:54:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:54:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:55:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-08-10 20:55:03 --> SMTP Error: Could not connect to SMTP host. Failed to connect to server
+in VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php on line 2233.
+ 1 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(2019): PHPMailer\PHPMailer\PHPMailer->smtpConnect([])
+ 2 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1678): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Thu, 10 Aug 2023 20:55:03 +0700
+To: Pemberitahuan Pengajuan surat permohonan PKL <pimpinan@gmail.com>
+From: Pengajuan surat permohonan PKL <admin@gmail.com>
+Subject: Pengajuan surat permohonan PKL
+Message-ID: <bL0qfMfNT6uYptfHljPjVwSwBXwqn9j4ZO6FcsWTM4@localhost>
+X-Mailer: PHPMailer 6.8.0 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="b1=_bL0qfMfNT6uYptfHljPjVwSwBXwqn9j4ZO6FcsWTM4"
+Content-Transfer-Encoding: 8bit
+
+', '--b1=_bL0qfMfNT6uYptfHljPjVwSwBXwqn9j4ZO6FcsWTM4
+Content-Type: text/plain; charset=us-ascii
+
+HTML messaging not supported
+
+--b1=_bL0qfMfNT6uYptfHljPjVwSwBXwqn9j4ZO6FcsWTM4
+Content-Type: text/html; charset=us-ascii
+
+PKL Bidang RIDA : Administrator Ingin menginformasikan telah menerima pengajuan surat permohonan PKL Adeset. Silahkan Pimpinan melakukan verifikasi disetujui/ditolak. Terimakasih!
+
+
+--b1=_bL0qfMfNT6uYptfHljPjVwSwBXwqn9j4ZO6FcsWTM4--
+')
+ 3 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1516): PHPMailer\PHPMailer\PHPMailer->postSend()
+ 4 APPPATH\Controllers\Request.php(188): PHPMailer\PHPMailer\PHPMailer->send()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Request->verifikasiStatus('8')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Request))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\pkl-rida\\public\\index.php')
+INFO - 2023-08-10 20:55:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:55:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:55:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:56:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-08-10 20:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
