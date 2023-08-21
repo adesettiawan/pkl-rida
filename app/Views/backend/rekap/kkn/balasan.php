@@ -68,7 +68,9 @@
                                             <td><a href="<?= base_url('assets/file_replies/kkn/' . $balasan['file_replies']) ?>" target="_blank" class="btn btn-danger px-2 btn-sm text-white">Link File</a></td>
                                             <td>
                                                 <?php if ($balasan['status'] == 1) { ?>
-                                                    <div class="badge badge-success badge-shadow">Diterima</div>
+                                                    <div class="badge badge-primary badge-shadow">Diterima</div>
+                                                <?php } elseif ($balasan['status'] == 3) { ?>
+                                                    <div class="badge badge-success badge-shadow">Disetujui</div>
                                                 <?php } elseif ($balasan['status'] == 2) { ?>
                                                     <div class="badge badge-warning badge-shadow">Pending</div>
                                                 <?php } else { ?>

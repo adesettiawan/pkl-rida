@@ -143,7 +143,9 @@ $userLogin = session()->get('level');
                                 <label>Pilih Status</label>
                                 <select class="form-control" name="status">
                                     <?php if ($balasan['status'] == 1) { ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
@@ -153,7 +155,9 @@ $userLogin = session()->get('level');
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <option value="2">Pending</option>
                                         <option value="0">Ditolak</option>
                                     <?php } elseif ($balasan['status'] == 2) { ?>
@@ -161,14 +165,18 @@ $userLogin = session()->get('level');
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <option value="0">Ditolak</option>
                                     <?php } else { ?>
                                         <option value="0">Ditolak</option>
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <option value="2">Pending</option>
                                     <?php } ?>
 

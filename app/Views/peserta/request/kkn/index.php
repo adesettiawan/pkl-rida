@@ -92,7 +92,7 @@
                                                     <?php if ($permohonan['status'] == 1) { ?>
                                                         <div class="badge badge-secondary badge-shadow">Ditinjau</div>
                                                     <?php } elseif ($permohonan['status'] == 3) { ?>
-                                                        <div class="badge badge-success badge-shadow">Diterima</div>
+                                                        <div class="badge badge-success badge-shadow">Disetujui</div>
                                                     <?php } elseif ($permohonan['status'] == 2) { ?>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     <?php } else { ?>
