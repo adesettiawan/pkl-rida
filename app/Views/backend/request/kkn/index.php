@@ -152,7 +152,9 @@ $userLogin = session()->get('level');
                                 <label>Pilih Status</label>
                                 <select class="form-control" name="status">
                                     <?php if ($permohonan['status'] == 1) { ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
@@ -162,7 +164,9 @@ $userLogin = session()->get('level');
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <option value="2">Pending</option>
                                         <option value="0">Ditolak</option>
                                     <?php } elseif ($permohonan['status'] == 2) { ?>
@@ -170,25 +174,37 @@ $userLogin = session()->get('level');
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <option value="0">Ditolak</option>
                                     <?php } else { ?>
                                         <option value="0">Ditolak</option>
                                         <?php if ($userLogin == 0) : ?>
                                             <option value="3">Disetujui</option>
                                         <?php endif; ?>
-                                        <option value="1">Diterima</option>
+                                        <?php if ($userLogin == 1) : ?>
+                                            <option value="1">Diterima</option>
+                                        <?php endif; ?>
                                         <option value="2">Pending</option>
                                     <?php } ?>
 
                                 </select>
                             </div>
-                            <?php if ($userLogin == 1) : ?>
-                                <div class="form-group">
-                                    <label>Tanggal Diterima</label>
-                                    <input id="tgl_diterima" type="date" class="form-control" name="tgl_diterima" value="<?= $permohonan['tgl_diterima'] != '0000-00-00' ? $permohonan['tgl_diterima'] : '' ?>">
-                                </div>
+                            <?php if ($userLogin == 1) :
+                                $type = "date";
+                                $style = "display: block;";
+                            ?>
+                            <?php else :
+                                $type = "hidden";
+                                $style = "display: none;";
+                            ?>
+
                             <?php endif ?>
+                            <div class="form-group" style="<?= $style ?>">
+                                <label>Tanggal Diterima</label>
+                                <input id="tgl_diterima" type="<?= $type ?>" class="form-control" name="tgl_diterima" value="<?= $permohonan['tgl_diterima'] != '0000-00-00' ? $permohonan['tgl_diterima'] : '' ?>">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
